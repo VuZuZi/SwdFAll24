@@ -1,30 +1,22 @@
-import { configureStore, combineReducers } from "@reduxjs/toolkit";
-import userReducer from "./userSlice/user.slice";
-import { persistReducer, persistStore } from "redux-persist";
-import storage from "redux-persist/lib/storage";
-import categoryReducer from "./categorySlice/category.slice";
-import packageReducer from "./packageSlice/packageSlice";
-import movieReducer from "./movieSlice/movieSlice";
-import singleMovieReducer from "./movieSlice/singleMovieSlice";
-import favoriteReducer from "./userSlice/favoriteSlice";
+import { configureStore } from "@reduxjs/toolkit";
+import { persistStore, persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage"; // sử dụng localStorage
+import cartReducer from "../utils/cartSlice";
 
-const rootReducer = combineReducers({
-  user: userReducer,
-  category: categoryReducer,
-  package: packageReducer,
-  movie: movieReducer,
-  singleMovie: singleMovieReducer,
-  favorite: favoriteReducer,
-});
 const persistConfig = {
   key: "root",
   storage,
-  version: 1,
 };
-const persistedReducer = persistReducer(persistConfig, rootReducer);
-export const store = configureStore({
-  reducer: persistedReducer,
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({ serializableCheck: false }),
+
+// Tạo persisted reducer cho cart
+const persistedCartReducer = persistReducer(persistConfig, cartReducer);
+
+const store = configureStore({
+  reducer: {
+    cart: persistedCartReducer,
+  },
 });
-export const persistor = persistStore(store);
+
+const persistor = persistStore(store);
+
+export { store, persistor };

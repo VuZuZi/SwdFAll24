@@ -1,73 +1,12 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
-  email: {
-    type: String,
-    required: true,
-    unique: true,
-  },
-  fullName: {
-    type: String,
-    required: true,
-  },
-  password: {
-    type: String,
-    required: true, // thêm validation check có ký tự hoa
-    minlength: 6,
-  },
-  bod: {
-    type: Date,
-    default: Date.now,
-  },
-  phone: {
-    type: String,
-    required: true, // thiếu validate
-  },
-  premium: {
-    isPremium: {
-      type: Boolean,
-      default: false,
-    },
-    exp: {
-      type: Date,
-      default: undefined,
-    },
-  },
-  isAdmin: {
-    type: Boolean,
-    default: false,
-  },
-  avatar: {
-    type: String,
-    default: "/images/user.png",
-  },
-  isActive: {
-    type: Boolean,
-    default: true,
-  },
-  balance: {
-    type: Number,
-    default: 0,
-  },
-  likedMovies: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Movies",
-    },
-  ],
-  watchHistory: [
-    {
-      movieId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Movies",
-      },
-      watchedOn: {
-        type: Date,
-        default: Date.now(),
-      },
-    },
-  ],
+  email: { type: String, unique: true },
+  first_name: { type: String, default: null },
+  last_name: { type: String, default: null },
+  phone: { type: String, default: null },
+  password: { type: String, required: true },
+  role: { type: String, default: "user" },
 });
 
-const User = mongoose.models.User || mongoose.model("User", userSchema);
-export default User;
+module.exports = mongoose.model("User", userSchema);
