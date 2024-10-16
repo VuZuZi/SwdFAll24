@@ -194,8 +194,8 @@ export const Category = () => {
         </div>
         <div className="item-container">
           <div className="sticky-header">
-            <div className="section-title">
-              <h2>Tin đăng mới</h2>
+            <div style={{ marginBottom: "8px" }}>
+              <h2 style={{ margin: "0", fontSize: "26px" }}>Tin đăng mới</h2>
             </div>
             <div
               style={{ display: "flex", gap: "16px" }}
@@ -223,7 +223,7 @@ export const Category = () => {
                 <option value="address3">Địa chỉ 3</option>
               </select>
               <button
-                className="btn btn-success"
+                className="btn btn-danger"
                 // onClick={handlePostAd}
                 style={{ marginLeft: "10px" }}
               >
@@ -240,18 +240,28 @@ export const Category = () => {
               <div className="item-detail-search" key={product._id}>
                 <div className="portfolio-items product-item">
                   <img src={product.image} alt="" />
-                  <h3>{product.name}</h3>
-                  {/* <p>{formatPrice(product.price)} VND</p> */}
+                  <div className="col-gap">
+                    <h3 className="text-left" style={{ margin: "0" }}>
+                      {product.name}
+                    </h3>
+                    {/* <p>{formatPrice(product.price)} VND</p> */}
+                    <p className="text-left" style={{ margin: "0" }}>
+                      {formatPrice(product.price)} VND
+                    </p>
+                    <div className="button-container-category">
+                      <p className="text-left" style={{ margin: "0" }}>
+                        Ở Hà Nội
+                      </p>
 
-                  <div className="button-container-category">
-                    <p>18.000.000 vnd</p>
-                    <p>Ở Hà Nội</p>
-
-                    <Link to={`/productdetail/${product._id}`}>
-                      <button className="addToCard">
-                        <FontAwesomeIcon icon={faCircleInfo} />
-                      </button>
-                    </Link>
+                      <Link to={`/productdetail/${product._id}`}>
+                        <button className="addToCard">
+                          <FontAwesomeIcon icon={faCircleInfo} />
+                        </button>
+                      </Link>
+                      <span style={{ margin: "0", alignSelf: "center" }}>
+                        3 phút
+                      </span>
+                    </div>
                   </div>
                 </div>
                 <hr></hr>

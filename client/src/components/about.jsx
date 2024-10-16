@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import img from "../assets/img/R2.png";
+import img from "../assets/img/about.jpg";
 import "../assets/css/AboutCss.css";
 
 const About = (props) => {
