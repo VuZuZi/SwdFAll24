@@ -9,31 +9,32 @@ const Service = () => {
         </div>
         <div className="row">
           <div className="col-md-3 crirl-info">
-            <h3>Giao hàng tận nhà</h3>
+            <h3>Đăng tin miễn phí</h3>
             <p>
-              Khách hàng có thể đặt rau trên website của chúng tôi và sẽ được
-              nhận rau trong khoảng thời gian ngắn nhất{" "}
+              Người dùng có thể đăng tin rao vặt miễn phí trên website của chúng
+              tôi và kết nối với người mua nhanh chóng.
             </p>
           </div>
           <div className="col-md-3 crirl-info">
-            <h3>Dịch Vụ Chuyên Nghiệp</h3>
+            <h3>Giao diện dễ sử dụng</h3>
             <p>
-              Chúng tôi đặt sự chuyên nghiệp lên hàng đầu đề phục vụ những điều
-              tốt nhất đến với khách hàng{" "}
+              Chúng tôi thiết kế giao diện đơn giản, thân thiện, giúp người dùng
+              dễ dàng thao tác và đăng tin một cách nhanh chóng.
             </p>
           </div>
           <div className="col-md-3 crirl-info">
-            <h3>Tư vấn - Chăm sóc khách hàng </h3>
+            <h3>Hỗ trợ 24/7</h3>
             <p>
-              Chúng tôi luôn sẵn sàng hỗ trợ và tư vấn khách hàng trong bất kỳ
-              khoản thời gian nào mà khách hàng cần chúng tôi
+              Đội ngũ chăm sóc khách hàng luôn sẵn sàng hỗ trợ bạn 24/7, giải
+              đáp mọi thắc mắc và đảm bảo quá trình sử dụng dịch vụ của bạn
+              thuận lợi.
             </p>
           </div>
           <div className="col-md-3 crirl-info">
-            <h3>Tư Vấn Dinh Dưỡng</h3>
+            <h3>Phân loại sản phẩm dễ dàng</h3>
             <p>
-              Chúng tôi có thể tư vấn khách hàng về vấn đề dinh dưỡng và các
-              chất lượng của các loại rau làm sau để tốt nhất đối với khách hàng{" "}
+              Chúng tôi giúp bạn dễ dàng phân loại sản phẩm theo danh mục, giúp
+              người mua tìm kiếm nhanh chóng và hiệu quả.
             </p>
           </div>
         </div>
