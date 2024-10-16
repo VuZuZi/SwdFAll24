@@ -112,7 +112,7 @@ export const Contact = (props) => {
                 <span>
                   <i className="fa fa-phone"></i> Số Điện Thoại
                 </span>{" "}
-                <p style={{ color: "#FFF" }}>0386405371</p>
+                <p style={{ color: "#FFF" }}>0982009465</p>
               </p>
             </div>
             <div className="contact-item">
@@ -120,7 +120,7 @@ export const Contact = (props) => {
                 <span>
                   <i className="fa fa-envelope-o"></i> Email
                 </span>{" "}
-                <p style={{ color: "#FFF" }}>Greenfreshhk16@gmail.com</p>
+                <p style={{ color: "#FFF" }}>raovat123@gmail.com</p>
               </p>
             </div>
           </div>

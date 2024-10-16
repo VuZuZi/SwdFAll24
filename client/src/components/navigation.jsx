@@ -78,7 +78,7 @@ export const Navigation = (props) => {
               className="navbar-brand page-scroll"
               onClick={() => handleNavigation("/")}
             >
-              <span style={{ color: "#7FFF00" }}>Green </span> Fresh
+              <span style={{ color: "#7FFF00" }}>Rao </span> Vặt
             </a>{" "}
           </div>
         </div>
