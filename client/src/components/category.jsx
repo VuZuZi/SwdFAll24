@@ -47,7 +47,7 @@ export const Category = () => {
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get("https://exe-be.onrender.com/product/");
+      const response = await axios.get("http://localhost:3000/product/");
       setProducts(response.data);
       filterProducts(response.data, searchKeyword);
     } catch (error) {
@@ -233,7 +233,7 @@ export const Category = () => {
           </div>
 
           {noResults && (
-            <div className="no-results">Không có sản phẩm phù hợp.</div>
+            <div className="no-results">Không có tin rao vặt phù hợp.</div>
           )}
           <div className="item-search">
             {displayedProducts.map((product) => (

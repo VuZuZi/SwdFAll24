@@ -16,7 +16,7 @@ const ProductManager = () => {
   // Fetch products
   useEffect(() => {
     const fetchProducts = async () => {
-      const response = await axios.get("https://exe-be.onrender.com/product/");
+      const response = await axios.get("http://localhost:3000/product/");
       setProducts(response.data);
     };
     fetchProducts();
@@ -26,7 +26,7 @@ const ProductManager = () => {
   const addProduct = async () => {
     try {
       const response = await axios.post(
-        "https://exe-be.onrender.com/product/create",
+        "http://localhost:3000/product/create",
         newProduct
       );
       setProducts([...products, response.data]);

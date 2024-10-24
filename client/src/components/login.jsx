@@ -17,12 +17,11 @@ export const Login = (props) => {
 
   const handleRegister = async () => {
     if (password !== confirmPassword) {
-      alert("Password do not match");
       return;
     }
     try {
       const response = await axios.post(
-        "https://exe-be.onrender.com/auth/register",
+        "http://localhost:3000/auth/register",
         {
           email,
           password,
@@ -45,7 +44,7 @@ export const Login = (props) => {
   const handleLogin = async () => {
     try {
       const response = await axios.post(
-        "https://exe-be.onrender.com/auth/login",
+        "http://localhost:3000/auth/login",
         {
           email,
           password,

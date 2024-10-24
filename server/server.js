@@ -17,7 +17,7 @@ const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.json());
-const dbUri = `mongodb+srv://linh270702:C7B54jdcuStfb0Rm@exe.wpuiaje.mongodb.net/EXE?retryWrites=true&w=majority`;
+const dbUri = `mongodb://127.0.0.1:27017/rao-vat`;
 mongoose
   .connect(dbUri, {
     useNewUrlParser: true,

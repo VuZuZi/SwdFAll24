@@ -25,7 +25,7 @@ export const UserManagement = () => {
 
       try {
         const response = await axios.get(
-          "https://exe-be.onrender.com/user/getAll",
+          "http://localhost:3000/user/getAll",
           {
             headers: header,
           }

@@ -28,14 +28,14 @@ export const Profile = (props) => {
       };
 
       await axios.put(
-        "https://exe-be.onrender.com/user/update-profile",
+        "http://localhost:3000/user/update-profile",
         updateData,
         {
           headers,
         }
       );
       const response = await axios.get(
-        "https://exe-be.onrender.com/user/profile",
+        "http://localhost:3000/user/profile",
         {
           headers,
         }
@@ -56,7 +56,7 @@ export const Profile = (props) => {
         };
 
         const response = await axios.get(
-          "https://exe-be.onrender.com/user/profile",
+          "http://localhost:3000/user/profile",
           {
             headers,
           }

@@ -11,7 +11,7 @@ const PaidTransactions = () => {
     const fetchPaidTransactions = async () => {
       try {
         const response = await axios.get(
-          "https://exe-be.onrender.com/checkout/paid"
+          "http://localhost:3000/checkout/paid"
         );
         setTransactions(response.data);
         setLoading(false);

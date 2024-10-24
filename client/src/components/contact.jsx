@@ -25,7 +25,7 @@ export const Contact = (props) => {
       email: email,
     };
     axios
-      .post("https://exe-be.onrender.com/sendEmail", data)
+      .post("http://localhost:3000/sendEmail", data)
       .then((response) => {
         console.log(response.data);
         clearState();
@@ -87,13 +87,14 @@ export const Contact = (props) => {
                     placeholder="Lời Nhắn"
                     required
                     onChange={handleChange}
+                    style={{ resize: "unset" }}
                   ></textarea>
                   <p className="help-block text-danger"></p>
                 </div>
                 <div id="success"></div>
-                <button type="submit" className="btn btn-custom btn-lg">
+                {/* <button type="submit" className="btn btn-custom btn-lg">
                   Gửi Thông Tin
-                </button>
+                </button> */}
               </form>
             </div>
           </div>

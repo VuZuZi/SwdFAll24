@@ -17,7 +17,7 @@ export const OrderPage = () => {
         setLoading(true);
         try {
           const response = await axios.get(
-            `https://exe-be.onrender.com/checkout/orders/status/${orderStatus}`
+            `http://localhost:3000/checkout/orders/status/${orderStatus}`
           );
           console.log(response.data);
           setOrders(response.data);
@@ -36,7 +36,7 @@ export const OrderPage = () => {
   const handleDelete = async (orderId) => {
     try {
       await axios.delete(
-        `https://exe-be.onrender.com/checkout/remove/${orderId}`
+        `http://localhost:3000/checkout/remove/${orderId}`
       );
       const updatedOrders = orders.filter((order) => order._id !== orderId);
       setOrders(updatedOrders);
@@ -69,7 +69,7 @@ export const OrderPage = () => {
 
     try {
       const response = await axios.put(
-        "https://exe-be.onrender.com/checkout/order/update-status",
+        "http://localhost:3000/checkout/order/update-status",
         updatePayload
       );
 
