@@ -6,6 +6,7 @@ require("dotenv").config();
 const authRouter = require("./src/routers/authRoutes");
 const userRouter = require("./src/routers/userRoutes");
 const productRouter = require("./src/routers/productRoutes");
+const adRoute = require("./src/routers/adRoutes");
 const cartRouter = require("./src/routers/cartRouter");
 const checkoutRouter = require("./src/routers/checkoutRoutes");
 const paymentRouter = require("./src/routers/paymentRoutes");
@@ -34,6 +35,7 @@ mongoose
 app.use("/auth", authRouter);
 app.use("/user", userRouter);
 app.use("/product", productRouter);
+app.use("/ad", adRoute);
 app.use("/cart", cartRouter);
 app.use("/status", paymentRouter);
 app.use("/payment", paymentController);

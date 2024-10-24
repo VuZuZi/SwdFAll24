@@ -47,7 +47,7 @@ export const Category = () => {
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/product/");
+      const response = await axios.get("http://localhost:3000/ad/");
       setProducts(response.data);
       filterProducts(response.data, searchKeyword);
     } catch (error) {
