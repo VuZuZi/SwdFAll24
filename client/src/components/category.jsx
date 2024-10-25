@@ -12,7 +12,7 @@ import { useHistory, Link } from "react-router-dom";
 import { addToCart, setCartItems } from "../utils/cartSlice";
 
 export const Category = () => {
-  const [products, setProducts] = useState([]);
+  const [ads, setAds] = useState([]);
   const [searchKeyword, setSearchKeyword] = useState("");
   const [displayedProducts, setDisplayedProducts] = useState([]);
   const [numberOfDisplayedProducts, setNumberOfDisplayedProducts] = useState(9);
@@ -30,7 +30,7 @@ export const Category = () => {
       setUserId(decodedToken.id_user);
       setRole(decodedToken.role);
     }
-    fetchProducts();
+    fetchAds();
   }, []);
 
   useEffect(() => {
@@ -45,11 +45,13 @@ export const Category = () => {
     }
   }, [dispatch]);
 
-  const fetchProducts = async () => {
+  const fetchAds = async () => {
     try {
       const response = await axios.get("http://localhost:3000/ad/");
-      setProducts(response.data);
-      filterProducts(response.data, searchKeyword);
+      console.log(response);
+      
+      setAds(response.data);
+      // filterProducts(response.data, searchKeyword);
     } catch (error) {
       console.error("Error fetching products", error);
     }
@@ -71,13 +73,13 @@ export const Category = () => {
   };
 
   useEffect(() => {
-    filterProducts(products, searchKeyword);
-  }, [searchKeyword, products]);
+    filterProducts(ads, searchKeyword);
+  }, [searchKeyword, ads]);
 
   const loadMoreProducts = () => {
     const newNumberOfDisplayedProducts = numberOfDisplayedProducts + 9;
     setNumberOfDisplayedProducts(newNumberOfDisplayedProducts);
-    setDisplayedProducts(products.slice(0, newNumberOfDisplayedProducts));
+    setDisplayedProducts(ads.slice(0, newNumberOfDisplayedProducts));
   };
 
   const formatPrice = (price) => {
@@ -259,7 +261,7 @@ export const Category = () => {
                         </button>
                       </Link>
                       <span style={{ margin: "0", alignSelf: "center" }}>
-                        3 phút
+                      {product.createdAt}
                       </span>
                     </div>
                   </div>
@@ -268,7 +270,7 @@ export const Category = () => {
               </div>
             ))}
           </div>
-          {numberOfDisplayedProducts < products.length && (
+          {numberOfDisplayedProducts < ads.length && (
             <div className="btn-load-more">
               <button onClick={loadMoreProducts} className="button-load-more">
                 Xem Thêm
