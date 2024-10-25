@@ -10,6 +10,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartPlus, faCircleInfo } from "@fortawesome/free-solid-svg-icons";
 import { useHistory, Link } from "react-router-dom";
 import { addToCart, setCartItems } from "../utils/cartSlice";
+import { formatDistanceToNow } from "date-fns";
 
 export const Category = () => {
   const [ads, setAds] = useState([]);
@@ -49,7 +50,7 @@ export const Category = () => {
     try {
       const response = await axios.get("http://localhost:3000/ad/");
       console.log(response);
-      
+
       setAds(response.data);
       // filterProducts(response.data, searchKeyword);
     } catch (error) {
@@ -244,15 +245,15 @@ export const Category = () => {
                   <img src={product.image} alt="" />
                   <div className="col-gap">
                     <h3 className="text-left" style={{ margin: "0" }}>
-                      {product.name}
+                      {product.title}
                     </h3>
                     {/* <p>{formatPrice(product.price)} VND</p> */}
                     <p className="text-left" style={{ margin: "0" }}>
-                      {formatPrice(product.price)} VND
+                     Giá:  {formatPrice(product.price)} VND
                     </p>
                     <div className="button-container-category">
                       <p className="text-left" style={{ margin: "0" }}>
-                        Ở Hà Nội
+                        Ở {product.location}
                       </p>
 
                       <Link to={`/productdetail/${product._id}`}>
@@ -261,7 +262,9 @@ export const Category = () => {
                         </button>
                       </Link>
                       <span style={{ margin: "0", alignSelf: "center" }}>
-                      {product.createdAt}
+                        {formatDistanceToNow(new Date(product.createdAt), {
+                          addSuffix: true,
+                        })}{" "}
                       </span>
                     </div>
                   </div>

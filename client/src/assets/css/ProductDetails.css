@@ -1,41 +1,71 @@
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
+
 .product-detail-container {
   display: flex;
   flex-direction: column;
-  align-items: center; /* căn giữa theo chiều ngang */
-  padding-top: 150px;
+  align-items: center; /* Căn giữa theo chiều ngang */
+  padding: 20px; /* Padding tổng thể */
+  max-width: 1200px; /* Giới hạn chiều rộng tối đa */
+  margin: 0 auto; /* Căn giữa */
+  margin-top: 120px;
 }
 
 .product-detail-content {
   display: flex;
   flex-direction: row; 
-  align-items: center; 
-  justify-content: center; 
+  align-items: flex-start; /* Đối齐 các mục theo đầu */
+  justify-content: flex-start; /* Căn trái */
   border: 1px solid #ccc; 
   padding: 20px;
-  margin-bottom: 20px;
-
+  margin-top: 20px; /* Tạo khoảng cách phía trên */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Thêm bóng nhẹ cho sản phẩm */
+  border-radius: 8px; /* Bo góc nhẹ cho khung */
+  background-color: #fff; /* Nền trắng */
+  width: 100%; /* Chiếm toàn bộ chiều rộng */
+  max-width: 1000px; /* Giới hạn chiều rộng tối đa cho nội dung */
+  overflow: hidden; /* Ẩn các phần bị tràn ra ngoài */
 }
-.product-detail-img{
+
+.product-detail-img {
+  flex: 1 1 300px; /* Chiếm không gian 1, có chiều rộng tối thiểu */
   margin-right: 20px; 
-}
-.product-detail-image {
-  width: 200px;
-  height: auto;
-}
-.product-detail-info {
-  flex-grow: 1; 
+  max-width: 400px; /* Giới hạn chiều rộng hình ảnh */
 }
 
-.addToCardDetail{
+.product-detail-image {
+  width: 100%; /* Đảm bảo hình ảnh chiếm toàn bộ chiều rộng khung */
+  height: auto; 
+  border-radius: 4px; /* Bo góc cho hình ảnh */
+  object-fit: cover; /* Đảm bảo hình ảnh không bị méo */
+}
+
+.product-detail-info {
+  flex: 1; /* Chiếm không gian còn lại */
+  margin-top: 20px; /* Để cách đều giữa thông tin và hình ảnh */
+  overflow: hidden; /* Ẩn các phần bị tràn ra ngoài */
+}
+
+.addToCardDetail {
   margin-top: 15px;
   background-color: #4caf50; 
-    color: white; 
-    padding: 5px 10px; 
-    border: none; 
-    border-radius: 5px; 
-    cursor: pointer; 
-    margin-right: 8px;
+  color: white; 
+  padding: 10px 15px; 
+  border: none; 
+  border-radius: 5px; 
+  cursor: pointer; 
+  transition: background-color 0.3s; /* Thêm hiệu ứng chuyển động */
 }
+
 .addToCardDetail:hover {
   background-color: #45a049; 
+}
+
+.slick-slide {
+  margin: 0 15px;
+}
+
+.slick-list {
+  margin: 0 -5px;
+  max-height: 500px;
 }
