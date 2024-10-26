@@ -22,6 +22,8 @@ export const Category = () => {
   const [searchKeyword, setSearchKeyword] = useState("");
   const [selectedCategory, setSelectedProduct] = useState("");
   const [selectedAddress, setSelectedAddress] = useState("");
+  const [selectedSubcategory, setSelectedSubcategory] = useState("");
+
   useEffect(() => {
     const fetchProvinces = async () => {
       try {
@@ -77,16 +79,26 @@ export const Category = () => {
   const handleSearchClick = () => {
     const query = {
       keyword: searchKeyword,
-      product: selectedCategory,
+      category: selectedCategory,
       address: selectedAddress,
+      subcategory: selectedSubcategory,
     };
-    console.log("click roi");
-
     axios
       .get("http://localhost:3000/ad/", { params: query })
       .then((res) => setAds(res.data))
       .catch((error) => console.error("Lỗi khi tìm kiếm:", error));
   };
+
+  const handleSubcategoryClick = (subcategory) => {
+    setSelectedSubcategory(subcategory);
+    setSelectedProduct('');
+  };
+
+  useEffect(() => {
+    if (selectedSubcategory) {
+      handleSearchClick();
+    }
+  }, [selectedSubcategory]);
 
   const loadMoreProducts = () => {
     const newNumberOfDisplayedProducts = numberOfDisplayedProducts + 9;
@@ -120,7 +132,9 @@ export const Category = () => {
                 >
                   {category.subcategories.map((sub, subIndex) => (
                     <li key={subIndex}>
-                      <a href="#">{`+ ${sub}`}</a>
+                      <a
+                        onClick={() => handleSubcategoryClick(sub)}
+                      >{`+ ${sub}`}</a>
                     </li>
                   ))}
                 </ul>
@@ -153,7 +167,9 @@ export const Category = () => {
               >
                 <option value="">Chọn sản phẩm</option>
                 {categories.map((category, index) => (
-                  <option key={index} value={category.name}>{category.name}</option>
+                  <option key={index} value={category.name}>
+                    {category.name}
+                  </option>
                 ))}
               </select>
 

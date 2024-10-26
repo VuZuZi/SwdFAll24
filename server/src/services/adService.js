@@ -25,7 +25,7 @@ const adService = {
     }
   },
 
-  getFilteredAds: async (keyword, product, address) => {
+  getFilteredAds: async (keyword, category, address , subcategory) => {
     try {
       const filter = {};
       
@@ -36,12 +36,16 @@ const adService = {
         ];
       }
       
-      if (product) {
-        filter["category.name"] = product;
+      if (category) {
+        filter["category.name"] = category;
       }
 
       if (address) {
         filter.location = address;
+      }
+
+      if (subcategory) {
+        filter["category.subcategory"] = subcategory;
       }
       
       const ads = await Ad.find(filter)

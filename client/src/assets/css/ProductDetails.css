@@ -14,36 +14,35 @@
 .product-detail-content {
   display: flex;
   flex-direction: row; 
-  align-items: flex-start; /* Đối齐 các mục theo đầu */
-  justify-content: flex-start; /* Căn trái */
-  border: 1px solid #ccc; 
+  align-items: flex-start; 
+  justify-content: flex-start;
   padding: 20px;
-  margin-top: 20px; /* Tạo khoảng cách phía trên */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Thêm bóng nhẹ cho sản phẩm */
-  border-radius: 8px; /* Bo góc nhẹ cho khung */
-  background-color: #fff; /* Nền trắng */
-  width: 100%; /* Chiếm toàn bộ chiều rộng */
-  max-width: 1000px; /* Giới hạn chiều rộng tối đa cho nội dung */
-  overflow: hidden; /* Ẩn các phần bị tràn ra ngoài */
+  margin-top: 20px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  border-radius: 8px; 
+  background-color: #fff; 
+  width: 100%; 
+  max-width: 1000px; 
+  overflow: hidden; 
 }
 
 .product-detail-img {
-  flex: 1 1 300px; /* Chiếm không gian 1, có chiều rộng tối thiểu */
+  flex: 1 1 300px; 
   margin-right: 20px; 
-  max-width: 400px; /* Giới hạn chiều rộng hình ảnh */
+  max-width: 400px; 
 }
 
 .product-detail-image {
-  width: 100%; /* Đảm bảo hình ảnh chiếm toàn bộ chiều rộng khung */
+  width: 100%; 
   height: auto; 
-  border-radius: 4px; /* Bo góc cho hình ảnh */
-  object-fit: cover; /* Đảm bảo hình ảnh không bị méo */
+  border-radius: 4px; 
+  object-fit: cover;
 }
 
 .product-detail-info {
-  flex: 1; /* Chiếm không gian còn lại */
-  margin-top: 20px; /* Để cách đều giữa thông tin và hình ảnh */
-  overflow: hidden; /* Ẩn các phần bị tràn ra ngoài */
+  flex: 1; 
+  margin-top: 20px; 
+  overflow: hidden; 
 }
 
 .addToCardDetail {
@@ -54,18 +53,26 @@
   border: none; 
   border-radius: 5px; 
   cursor: pointer; 
-  transition: background-color 0.3s; /* Thêm hiệu ứng chuyển động */
+  transition: background-color 0.3s;
 }
 
 .addToCardDetail:hover {
   background-color: #45a049; 
 }
 
-.slick-slide {
-  margin: 0 15px;
-}
+
 
 .slick-list {
   margin: 0 -5px;
   max-height: 500px;
+}
+
+.sub-list a {
+  cursor: pointer;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.sub-list a:hover {
+  text-decoration: underline;
 }
