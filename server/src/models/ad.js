@@ -10,8 +10,14 @@ const adSchema = new mongoose.Schema({
         required: true,
     },
     category: {
-        type: String,
-        required: true,
+        name: {
+            type: String,
+            required: true,
+        },
+        subcategory: {
+            type: [String],
+            default: [],
+        },
     },
     price: {
         type: Number,

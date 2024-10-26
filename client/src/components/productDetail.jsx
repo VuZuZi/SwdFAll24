@@ -10,6 +10,7 @@ const ProductDetail = ({ addToCart }) => {
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [userId, setUserId] = useState(null);
+  
 
   useEffect(() => {
     const fetchProductDetail = async () => {

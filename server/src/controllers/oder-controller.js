@@ -30,13 +30,6 @@ router.post("/create", async function (req, res) {
 
   try {
     const paymentLinkRes = await payOs.createPaymentLink(body);
-    console.log({
-      amount: body.amount,
-      returnUrl,
-      cancelUrl,
-      description,
-      orderCodeStatus,
-    });
     return res.json({
       error: 0,
       message: "Success",

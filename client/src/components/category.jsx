@@ -14,23 +14,36 @@ import { formatDistanceToNow } from "date-fns";
 
 export const Category = () => {
   const [ads, setAds] = useState([]);
-  const [searchKeyword, setSearchKeyword] = useState("");
-  const [displayedProducts, setDisplayedProducts] = useState([]);
   const [numberOfDisplayedProducts, setNumberOfDisplayedProducts] = useState(9);
   const [noResults, setNoResults] = useState(false);
-  const [userId, setUserId] = useState(null);
-  const [role, setRole] = useState(null);
   const dispatch = useDispatch();
-  const cartItems = useSelector((state) => state.cart.cartItems);
-  const history = useHistory();
-
+  const [provinces, setProvinces] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [searchKeyword, setSearchKeyword] = useState("");
+  const [selectedCategory, setSelectedProduct] = useState("");
+  const [selectedAddress, setSelectedAddress] = useState("");
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      const decodedToken = jwtDecode(token);
-      setUserId(decodedToken.id_user);
-      setRole(decodedToken.role);
-    }
+    const fetchProvinces = async () => {
+      try {
+        const response = await axios.get("http://localhost:3000/province");
+
+        setProvinces(response.data);
+      } catch (error) {
+        console.error("Error fetching provinces:", error);
+      }
+    };
+
+    const fetchCategories = async () => {
+      try {
+        const response = await axios.get("http://localhost:3000/category");
+        setCategories(response.data);
+      } catch (error) {
+        console.error("Error fetching categories:", error);
+      }
+    };
+
+    fetchCategories();
+    fetchProvinces();
     fetchAds();
   }, []);
 
@@ -49,38 +62,35 @@ export const Category = () => {
   const fetchAds = async () => {
     try {
       const response = await axios.get("http://localhost:3000/ad/");
-      console.log(response);
 
       setAds(response.data);
-      // filterProducts(response.data, searchKeyword);
+      console.log("ads:", response.data);
     } catch (error) {
       console.error("Error fetching products", error);
     }
-  };
-
-  const filterProducts = (allProducts, keyword) => {
-    let filteredProducts = allProducts;
-    if (keyword) {
-      filteredProducts = filteredProducts.filter((product) =>
-        product.name.toLowerCase().includes(keyword.toLowerCase())
-      );
-    }
-    setDisplayedProducts(filteredProducts.slice(0, numberOfDisplayedProducts));
-    setNoResults(filteredProducts.length === 0);
   };
 
   const handleSearchInputChange = (event) => {
     setSearchKeyword(event.target.value);
   };
 
-  useEffect(() => {
-    filterProducts(ads, searchKeyword);
-  }, [searchKeyword, ads]);
+  const handleSearchClick = () => {
+    const query = {
+      keyword: searchKeyword,
+      product: selectedCategory,
+      address: selectedAddress,
+    };
+    console.log("click roi");
+
+    axios
+      .get("http://localhost:3000/ad/", { params: query })
+      .then((res) => setAds(res.data))
+      .catch((error) => console.error("Lỗi khi tìm kiếm:", error));
+  };
 
   const loadMoreProducts = () => {
     const newNumberOfDisplayedProducts = numberOfDisplayedProducts + 9;
     setNumberOfDisplayedProducts(newNumberOfDisplayedProducts);
-    setDisplayedProducts(ads.slice(0, newNumberOfDisplayedProducts));
   };
 
   const formatPrice = (price) => {
@@ -91,108 +101,31 @@ export const Category = () => {
     <div id="category" className="text-center" style={{ paddingTop: "150px" }}>
       <div className="container-form-search">
         <div className="flex-category">
-          <ul class="list-unstyled category-list">
-            <li>
-              <a
-                class="toggle-btn collapsed"
-                data-bs-toggle="collapse"
-                href="#collapseXeCo"
-                role="button"
-                aria-expanded="false"
-                aria-controls="collapseXeCo"
-              >
-                Xe cộ
-              </a>
-              <ul class="sub-list collapse" id="collapseXeCo">
-                <li>
-                  <a href="#">+ Xe máy</a>
-                </li>
-                <li>
-                  <a href="#">+ Ô tô</a>
-                </li>
-                <li>
-                  <a href="#">+ Xe đạp</a>
-                </li>
-                <li>
-                  <a href="#">+ Xe tải, Xe khách</a>
-                </li>
-                <li>
-                  <a href="#">+ Phụ tùng, linh kiện</a>
-                </li>
-              </ul>
-            </li>
-
-            <li>
-              <a
-                class="toggle-btn collapsed"
-                data-bs-toggle="collapse"
-                href="#collapseBatDongSan"
-                role="button"
-                aria-expanded="false"
-                aria-controls="collapseBatDongSan"
-              >
-                Bất động sản
-              </a>
-              <ul class="sub-list collapse" id="collapseBatDongSan">
-                <li>
-                  <a href="#">+ Nhà đất</a>
-                </li>
-                <li>
-                  <a href="#">+ Căn hộ</a>
-                </li>
-                <li>
-                  <a href="#">+ Văn phòng</a>
-                </li>
-              </ul>
-            </li>
-
-            <li>
-              <a
-                class="toggle-btn collapsed"
-                data-bs-toggle="collapse"
-                href="#collapseDienTu"
-                role="button"
-                aria-expanded="false"
-                aria-controls="collapseDienTu"
-              >
-                Đồ điện tử
-              </a>
-              <ul class="sub-list collapse" id="collapseDienTu">
-                <li>
-                  <a href="#">+ Điện thoại</a>
-                </li>
-                <li>
-                  <a href="#">+ Máy tính</a>
-                </li>
-                <li>
-                  <a href="#">+ TV</a>
-                </li>
-              </ul>
-            </li>
-
-            <li>
-              <a
-                class="toggle-btn collapsed"
-                data-bs-toggle="collapse"
-                href="#collapseThoiTrang"
-                role="button"
-                aria-expanded="false"
-                aria-controls="collapseThoiTrang"
-              >
-                Thời trang
-              </a>
-              <ul class="sub-list collapse" id="collapseThoiTrang">
-                <li>
-                  <a href="#">+ Áo Quần</a>
-                </li>
-                <li>
-                  <a href="#">+ Đầm cưới</a>
-                </li>
-                <li>
-                  <a href="#">+ Trang sức</a>
-                </li>
-              </ul>
-            </li>
+          <ul className="list-unstyled category-list">
+            {categories.map((category, index) => (
+              <li key={index}>
+                <a
+                  className="toggle-btn collapsed"
+                  data-bs-toggle="collapse"
+                  href={`#collapse${category.name.replace(/\s+/g, "")}`}
+                  role="button"
+                  aria-expanded="false"
+                  aria-controls={`collapse${category.name.replace(/\s+/g, "")}`}
+                >
+                  {category.name}
+                </a>
+                <ul
+                  className="sub-list collapse"
+                  id={`collapse${category.name.replace(/\s+/g, "")}`}
+                >
+                  {category.subcategories.map((sub, subIndex) => (
+                    <li key={subIndex}>
+                      <a href="#">{`+ ${sub}`}</a>
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            ))}
           </ul>
         </div>
         <div className="item-container">
@@ -212,22 +145,33 @@ export const Category = () => {
                 onChange={handleSearchInputChange}
                 placeholder="Tìm kiếm theo từ khóa"
               />
-              <select id="product-select" style={{ marginRight: "10px" }}>
+              <select
+                id="product-select"
+                style={{ marginRight: "10px" }}
+                onChange={(e) => setSelectedProduct(e.target.value)}
+                value={selectedCategory}
+              >
                 <option value="">Chọn sản phẩm</option>
-                <option value="product1">Sản phẩm 1</option>
-                <option value="product2">Sản phẩm 2</option>
-                <option value="product3">Sản phẩm 3</option>
+                {categories.map((category, index) => (
+                  <option key={index} value={category.name}>{category.name}</option>
+                ))}
               </select>
 
-              <select id="address-select">
+              <select
+                id="address-select"
+                value={selectedAddress}
+                onChange={(e) => setSelectedAddress(e.target.value)}
+              >
                 <option value="">Chọn địa chỉ</option>
-                <option value="address1">Địa chỉ 1</option>
-                <option value="address2">Địa chỉ 2</option>
-                <option value="address3">Địa chỉ 3</option>
+                {provinces.map((province) => (
+                  <option key={province.id} value={province.name}>
+                    {province.name}
+                  </option>
+                ))}
               </select>
               <button
                 className="btn btn-danger"
-                // onClick={handlePostAd}
+                onClick={handleSearchClick}
                 style={{ marginLeft: "10px" }}
               >
                 Tìm
@@ -239,17 +183,17 @@ export const Category = () => {
             <div className="no-results">Không có tin rao vặt phù hợp.</div>
           )}
           <div className="item-search">
-            {displayedProducts.map((product) => (
+            {ads.map((product) => (
               <div className="item-detail-search" key={product._id}>
                 <div className="portfolio-items product-item">
-                  <img src={product.image} alt="" />
+                  <img src={product.images[0]} alt={product.title} />
                   <div className="col-gap">
                     <h3 className="text-left" style={{ margin: "0" }}>
                       {product.title}
                     </h3>
                     {/* <p>{formatPrice(product.price)} VND</p> */}
                     <p className="text-left" style={{ margin: "0" }}>
-                     Giá:  {formatPrice(product.price)} VND
+                      Giá: {formatPrice(product.price)} VND
                     </p>
                     <div className="button-container-category">
                       <p className="text-left" style={{ margin: "0" }}>

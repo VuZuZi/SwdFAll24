@@ -7,11 +7,9 @@ const authRouter = require("./src/routers/authRoutes");
 const userRouter = require("./src/routers/userRoutes");
 const productRouter = require("./src/routers/productRoutes");
 const adRoute = require("./src/routers/adRoutes");
-const cartRouter = require("./src/routers/cartRouter");
+const provinceRoutes = require("./src/routers/provinceRoutes");
+const categoryRoutes = require("./src/routers/categoryRoutes");
 const checkoutRouter = require("./src/routers/checkoutRoutes");
-const paymentRouter = require("./src/routers/paymentRoutes");
-const paymentController = require("./src/controllers/payment-Controller");
-const orderController = require("./src/controllers/oder-controller");
 const app = express();
 
 const PORT = process.env.PORT || 3000;
@@ -36,10 +34,8 @@ app.use("/auth", authRouter);
 app.use("/user", userRouter);
 app.use("/product", productRouter);
 app.use("/ad", adRoute);
-app.use("/cart", cartRouter);
-app.use("/status", paymentRouter);
-app.use("/payment", paymentController);
-app.use("/order", orderController);
+app.use("/category", categoryRoutes);
+app.use('/province', provinceRoutes);
 app.use("/checkout", checkoutRouter);
 
 // Route để gửi email

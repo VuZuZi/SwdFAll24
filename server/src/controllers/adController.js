@@ -2,13 +2,16 @@ const adService = require("../services/adService");
 
 const adController = {
   getAll: async (req, res) => {
+    const { keyword, product, address } = req.query; 
     try {
-      const ads = await adService.getAllAd();
-      console.log(ads);
+      const ads = await adService.getFilteredAds(keyword, product, address);
+      console.log("Received Query:", req.query);
+      console.log(ads.length);
+      
       res.status(200).json(ads);
     } catch (error) {
-      console.error("Error fetching ads: ", error);
-      res.status(500).json({ error: "Internal server error" });
+      console.error("Err", error);
+      res.status(500).json({ error: "Err" });
     }
   },
 
