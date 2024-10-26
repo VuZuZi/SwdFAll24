@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from "react";
 import "../assets/css/SearchCss.css";
 import axios from "axios";
-import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {  faCircleInfo } from "@fortawesome/free-solid-svg-icons";
