@@ -1,22 +1,17 @@
 // src/components/Category.jsx
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { jwtDecode } from "jwt-decode";
 import "../assets/css/SearchCss.css";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCartPlus, faCircleInfo } from "@fortawesome/free-solid-svg-icons";
-import { useHistory, Link } from "react-router-dom";
-import { addToCart, setCartItems } from "../utils/cartSlice";
+import {  faCircleInfo } from "@fortawesome/free-solid-svg-icons";
+import {  Link } from "react-router-dom";
 import { formatDistanceToNow } from "date-fns";
 
 export const Category = () => {
   const [ads, setAds] = useState([]);
   const [numberOfDisplayedProducts, setNumberOfDisplayedProducts] = useState(9);
-  const [noResults, setNoResults] = useState(false);
-  const dispatch = useDispatch();
   const [provinces, setProvinces] = useState([]);
   const [categories, setCategories] = useState([]);
   const [searchKeyword, setSearchKeyword] = useState("");
@@ -49,17 +44,6 @@ export const Category = () => {
     fetchAds();
   }, []);
 
-  useEffect(() => {
-    const cartItems = localStorage.getItem("cartItems");
-    if (cartItems) {
-      try {
-        const parsedCartItems = JSON.parse(cartItems);
-        dispatch(setCartItems(parsedCartItems));
-      } catch (error) {
-        console.error("Error parsing cart items: ", error);
-      }
-    }
-  }, [dispatch]);
 
   const fetchAds = async () => {
     try {
@@ -195,7 +179,7 @@ export const Category = () => {
             </div>
           </div>
 
-          {noResults && (
+          {ads.length === 0 && (
             <div className="no-results">Không có tin rao vặt phù hợp.</div>
           )}
           <div className="item-search">
