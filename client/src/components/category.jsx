@@ -4,8 +4,8 @@ import "../assets/css/SearchCss.css";
 import axios from "axios";
 import "react-toastify/dist/ReactToastify.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {  faCircleInfo } from "@fortawesome/free-solid-svg-icons";
-import {  Link } from "react-router-dom";
+import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 import { formatDistanceToNow } from "date-fns";
 
 export const Category = () => {
@@ -14,7 +14,7 @@ export const Category = () => {
   const [provinces, setProvinces] = useState([]);
   const [categories, setCategories] = useState([]);
   const [searchKeyword, setSearchKeyword] = useState("");
-  const [selectedCategory, setSelectedProduct] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedAddress, setSelectedAddress] = useState("");
   const [selectedSubcategory, setSelectedSubcategory] = useState("");
 
@@ -43,7 +43,6 @@ export const Category = () => {
     fetchAds();
   }, []);
 
-
   const fetchAds = async () => {
     try {
       const response = await axios.get("http://localhost:3000/ad/");
@@ -66,6 +65,7 @@ export const Category = () => {
       address: selectedAddress,
       subcategory: selectedSubcategory,
     };
+    setSelectedSubcategory("");
     axios
       .get("http://localhost:3000/ad/", { params: query })
       .then((res) => setAds(res.data))
@@ -74,7 +74,13 @@ export const Category = () => {
 
   const handleSubcategoryClick = (subcategory) => {
     setSelectedSubcategory(subcategory);
-    setSelectedProduct('');
+    const parentCategory = categories.find((category) =>
+      category.subcategories.includes(subcategory)
+    );
+
+    parentCategory.name
+      ? setSelectedCategory(parentCategory.name)
+      : setSelectedCategory("");
   };
 
   useEffect(() => {
@@ -145,7 +151,7 @@ export const Category = () => {
               <select
                 id="product-select"
                 style={{ marginRight: "10px" }}
-                onChange={(e) => setSelectedProduct(e.target.value)}
+                onChange={(e) => setSelectedCategory(e.target.value)}
                 value={selectedCategory}
               >
                 <option value="">Chọn sản phẩm</option>
