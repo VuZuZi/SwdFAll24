@@ -45,6 +45,15 @@ const seedDatabase = async () => {
           "$2a$12$VDp1g8E4iE5s5c31NOxeWu6nRVVRoHWXsrxsYpbLaW/iXGTa4bLjm",
         role: "user",
       },
+      {
+        email: "dolevan055@gmail.com",
+        first_name: "admin",
+        last_name: "admin",
+        phone: "0982009465",
+        password:
+          "$2a$12$VDp1g8E4iE5s5c31NOxeWu6nRVVRoHWXsrxsYpbLaW/iXGTa4bLjm",
+        role: "user",
+      },
     ];
 
     await User.insertMany(users);

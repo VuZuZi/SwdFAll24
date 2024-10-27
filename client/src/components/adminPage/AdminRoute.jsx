@@ -18,8 +18,7 @@ const AdminRoute = ({ component: Component, ...rest }) => {
   }, []);
 
   if (userRole === null) {
-    // Optionally, you can return a loading spinner or message here
-    return null; // Or return a loading spinner or message
+    return null;
   }
 
   return (

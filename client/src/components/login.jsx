@@ -29,6 +29,7 @@ export const Login = (props) => {
       );
       if (response.status === 201) {
         toast.success("Đăng Ký Thành Công", { autoClose: 3000 });
+        history.push("/");
       } else {
         toast.error("Đăng Ký Không Thành Công", { autoClose: 3000 });
       }
