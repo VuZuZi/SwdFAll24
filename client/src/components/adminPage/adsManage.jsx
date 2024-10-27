@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { formatDistanceToNow } from "date-fns";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
+import { toast } from "react-toastify";
 
 const AdsManager = () => {
   const [ads, setAds] = useState([]);
@@ -42,18 +43,14 @@ const AdsManager = () => {
   }, []);
 
   const fetchAds = async () => {
-    try {
-      const response = await axios.get("http://localhost:3000/ad/");
-
-      setAds(response.data);
-      console.log("ads:", response.data);
-    } catch (error) {
-      console.error("Error fetching products", error);
-    }
-  };
-
-  const handleSearchInputChange = (event) => {
-    setSearchKeyword(event.target.value);
+    const query = {
+      isAdmin: true,
+    };
+    setSelectedSubcategory("");
+    axios
+      .get("http://localhost:3000/ad/", { params: query })
+      .then((res) => setAds(res.data))
+      .catch((error) => console.error("Lỗi khi tìm kiếm:", error));
   };
 
   const handleSearchClick = () => {
@@ -62,12 +59,17 @@ const AdsManager = () => {
       category: selectedCategory,
       address: selectedAddress,
       subcategory: selectedSubcategory,
+      isAdmin: true,
     };
     setSelectedSubcategory("");
     axios
       .get("http://localhost:3000/ad/", { params: query })
       .then((res) => setAds(res.data))
       .catch((error) => console.error("Lỗi khi tìm kiếm:", error));
+  };
+
+  const handleSearchInputChange = (event) => {
+    setSearchKeyword(event.target.value);
   };
 
   const handleSubcategoryClick = (subcategory) => {
@@ -80,6 +82,30 @@ const AdsManager = () => {
       ? setSelectedCategory(parentCategory.name)
       : setSelectedCategory("");
     setSearchKeyword("");
+  };
+
+  const handleToggleApproval = async (adId, isCurrentlyApproved) => {
+    try {
+      const response = await axios.patch(
+        `http://localhost:3000/ad/${adId}/approve`,
+        {
+          approved: isCurrentlyApproved,
+        }
+      );
+
+      setAds((prevAds) =>
+        prevAds.map((ad) =>
+          ad._id === adId ? { ...ad, approved: response.data.approved } : ad
+        )
+      );
+
+      const message = response.data.approved
+        ? "Duyệt tin thành công"
+        : "Hủy duyệt tin thành công";
+      toast.success(message, { autoClose: 3000 });
+    } catch (error) {
+      toast.error("Lỗi khi cập nhật trạng thái duyệt:", { autoClose: 3000 });
+    }
   };
 
   useEffect(() => {
@@ -219,11 +245,15 @@ const AdsManager = () => {
                   </div>
                   <div className="col-gap">
                     <button
-                      className="btn btn-danger"
-                      onClick={handleSearchClick}
+                      className={`btn ${
+                        product.approved ? "btn-success" : "btn-danger"
+                      }`}
                       style={{ marginLeft: "10px" }}
+                      onClick={() =>
+                        handleToggleApproval(product._id, product.approved)
+                      }
                     >
-                      Duyệt tin
+                      {product.approved ? "Hủy duyệt tin" : "Duyệt tin"}
                     </button>
                   </div>
                 </div>

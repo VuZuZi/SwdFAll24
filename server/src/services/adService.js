@@ -3,7 +3,10 @@ const Ad = require("../models/ad");
 const adService = {
   getAllAd: async () => {
     try {
-      const ads = await Ad.find({}, "title price location images createdAt")
+      const ads = await Ad.find(
+        { approved: true },
+        "title price location images createdAt"
+      )
         .populate("postedBy", "first_name last_name")
         .sort({ createdAt: -1 });
       return ads;
@@ -15,7 +18,7 @@ const adService = {
 
   getAdById: async (id) => {
     try {
-      const ad = await Ad.findById(id)
+      const ad = await Ad.findOne({ _id: id, approved: true })
         .populate("postedBy", "first_name last_name")
         .exec();
       return ad;
@@ -25,17 +28,21 @@ const adService = {
     }
   },
 
-  getFilteredAds: async (keyword, category, address , subcategory) => {
+  getFilteredAds: async (keyword, category, address, subcategory, isAdmin) => {
     try {
       const filter = {};
-      
+
+      if (!isAdmin) {
+        filter.approved = true;
+      }
+
       if (keyword) {
         filter.$or = [
           { title: { $regex: keyword, $options: "i" } },
-          { description: { $regex: keyword, $options: "i" } }
+          { description: { $regex: keyword, $options: "i" } },
         ];
       }
-      
+
       if (category) {
         filter["category.name"] = category;
       }
@@ -47,14 +54,35 @@ const adService = {
       if (subcategory) {
         filter["category.subcategory"] = subcategory;
       }
-      
+
       const ads = await Ad.find(filter)
         .populate("postedBy", "first_name last_name")
-        .sort({ createdAt: -1 });
+        .sort({ approved: -1, createdAt: -1 });
 
       return ads;
     } catch (error) {
       console.error("Error fetching filtered ads:", error);
+      throw error;
+    }
+  },
+  
+  approveAd: async (id, approved) => {
+    try {
+      console.log(approved);
+
+      const updatedAd = await Ad.findByIdAndUpdate(
+        id,
+        { approved: !approved },
+        { new: true }
+      );
+
+      if (!updatedAd) {
+        throw new Error("Bài đăng không tồn tại");
+      }
+
+      return updatedAd;
+    } catch (error) {
+      console.error("Lỗi khi duyệt bài đăng:", error);
       throw error;
     }
   },
