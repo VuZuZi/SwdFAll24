@@ -9,19 +9,12 @@ import { Login } from "./components/login";
 import ProductDetail from "./components/productDetail.jsx";
 import "./App.css";
 import { Profile } from "./components/profile";
-import { Checkout } from "./components/checkout.jsx";
 import { AdminPage } from "./components/adminPage/adminPage";
 import { ToastContainer } from "react-toastify";
-import { SuccessPage } from "./components/successPayment.jsx";
-import { FailurePage } from "./components/cancalPayment.jsx";
-import { Order } from "./components/order.jsx";
 import "react-toastify/dist/ReactToastify.css";
-import Cart from "./components/cart";
 import Service from "./components/service";
 import AppWrapper from "../src/utils/AppWrapper.js";
 import { UserManagement } from "./components/adminPage/userManagement ";
-import { OrderPage } from "./components/adminPage/orderPage";
-import PaidTransactions from "./components/adminPage/paidTransactions.jsx";
 import AdsManager from "./components/adminPage/adsManage.jsx";
 import AdminRoute from "./components/adminPage/AdminRoute.jsx";
 import Unauthorized from "./components/unauthorized.jsx";
@@ -48,29 +41,16 @@ const App = () => {
             <Route path="/services" component={withLoading(Service)} />
             <Route path="/about" component={withLoading(About)} />
             <Route path="/profile" component={withLoading(Profile)} />
-            <Route path="/order-detail" component={withLoading(Order)} />
             <Route path="/admin" component={withLoading(AdminPage)} />
-            <Route path="/cart" component={withLoading(Cart)} />
             <Route path="/category">
               <Category cart={cart} addToCart={addToCart} />
             </Route>
             <Route path="/productdetail/:productId">
               <ProductDetail addToCart={addToCart} />
             </Route>
-            <Route path="/checkout" component={withLoading(Checkout)} />
-            <Route path="/success" component={withLoading(SuccessPage)} />
-            <Route path="/fail" component={withLoading(FailurePage)} />
             <AdminRoute
               path="/admin-user"
               component={withLoading(UserManagement)}
-            />
-            <AdminRoute
-              path="/admin-order"
-              component={withLoading(OrderPage)}
-            />
-            <AdminRoute
-              path="/admin-paid"
-              component={withLoading(PaidTransactions)}
             />
             <AdminRoute
               path="/admin-ads"
