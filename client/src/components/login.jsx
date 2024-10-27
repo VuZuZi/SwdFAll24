@@ -5,10 +5,8 @@ import { faFacebook, faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { jwtDecode } from "jwt-decode"; // Sửa lại import jwtDecode
 export const Login = (props) => {
-  const [userId, setUserId] = useState(null);
-  const formsRef = useRef(null); // Sử dụng useRef để tham chiếu đến phần tử HTML có class là "forms"
+  const formsRef = useRef(null);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");

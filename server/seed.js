@@ -255,7 +255,9 @@ const seedDatabase = async () => {
         category: { name: "Xe cộ", subcategory: "Xe máy" },
         price: 40000000,
         location: "Hà Nội",
-        images: ["https://images.unsplash.com/photo-1542291026-7eec264c27ff"],
+        images: ["https://images.unsplash.com/photo-1542291026-7eec264c27ff",
+          "https://images.unsplash.com/photo-1542291026-7eec264c27ff","https://images.unsplash.com/photo-1542291026-7eec264c27ff"
+        ],
         postedBy: user._id,
       },
       {

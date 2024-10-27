@@ -18,7 +18,7 @@ const adService = {
 
   getAdById: async (id) => {
     try {
-      const ad = await Ad.findOne({ _id: id, approved: true })
+      const ad = await Ad.findOne({ _id: id})
         .populate("postedBy", "first_name last_name")
         .exec();
       return ad;
