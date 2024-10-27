@@ -24,10 +24,6 @@ import withLoading from "./components/withLoading";
 const App = () => {
   const [cart, setCart] = useState([]);
 
-  const addToCart = (product) => {
-    setCart([...cart, product]);
-  };
-
   return (
     <Router>
       <AppWrapper>
@@ -42,12 +38,6 @@ const App = () => {
             <Route path="/about" component={withLoading(About)} />
             <Route path="/profile" component={withLoading(Profile)} />
             <Route path="/admin" component={withLoading(AdminPage)} />
-            <Route path="/category">
-              <Category cart={cart} addToCart={addToCart} />
-            </Route>
-            <Route path="/productdetail/:productId">
-              <ProductDetail addToCart={addToCart} />
-            </Route>
             <AdminRoute
               path="/admin-user"
               component={withLoading(UserManagement)}
