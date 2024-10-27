@@ -43,6 +43,9 @@ export const Navigation = (props) => {
     borderRadius: "50%",
     overflow: "hidden",
   };
+  const handlePostAd = () => {
+    history.push("/postAd"); // Chuyển hướng đến trang đăng tin
+  };
 
   const imageStyle = {
     width: "100%",
@@ -53,6 +56,7 @@ export const Navigation = (props) => {
   const handleNavigation = (path) => {
     history.push(path);
   };
+  
 
   return (
     <nav id="menu" className="navbar navbar-default navbar-fixed-top">
@@ -168,7 +172,7 @@ export const Navigation = (props) => {
           {/* <input type="text" /> */}
           <button
                 className="btn btn-success"
-                // onClick={handlePostAd}
+                onClick={handlePostAd}
                 style={{ marginLeft: "10px" }}
               >Đăng tin</button>
           </div>
