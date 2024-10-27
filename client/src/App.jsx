@@ -22,7 +22,7 @@ import AppWrapper from "../src/utils/AppWrapper.js";
 import { UserManagement } from "./components/adminPage/userManagement ";
 import { OrderPage } from "./components/adminPage/orderPage";
 import PaidTransactions from "./components/adminPage/paidTransactions.jsx";
-import ProductManager from "./components/adminPage/productManage.jsx";
+import AdsManager from "./components/adminPage/adsManage.jsx";
 import AdminRoute from "./components/adminPage/AdminRoute.jsx";
 import Unauthorized from "./components/unauthorized.jsx";
 import Loading from "./components/loading.jsx";
@@ -74,7 +74,7 @@ const App = () => {
             />
             <AdminRoute
               path="/admin-ads"
-              component={withLoading(ProductManager)}
+              component={withLoading(AdsManager)}
             />
             <Route path="/unauthorized" component={withLoading(Unauthorized)} />
             <Route path="/loading" component={withLoading(Loading)} />

@@ -1,14 +1,12 @@
-// src/components/Category.jsx
-import React, { useEffect, useState } from "react";
-import "../assets/css/SearchCss.css";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import "react-toastify/dist/ReactToastify.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
+import "../../assets/css/ProductManagerCss.css";
 import { Link } from "react-router-dom";
 import { formatDistanceToNow } from "date-fns";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
 
-export const Category = () => {
+const AdsManager = () => {
   const [ads, setAds] = useState([]);
   const [numberOfDisplayedProducts, setNumberOfDisplayedProducts] = useState(9);
   const [provinces, setProvinces] = useState([]);
@@ -81,7 +79,7 @@ export const Category = () => {
     parentCategory.name
       ? setSelectedCategory(parentCategory.name)
       : setSelectedCategory("");
-      setSearchKeyword("");
+    setSearchKeyword("");
   };
 
   useEffect(() => {
@@ -135,7 +133,9 @@ export const Category = () => {
         <div className="item-container">
           <div className="sticky-header">
             <div style={{ marginBottom: "8px" }}>
-              <h2 style={{ margin: "0", fontSize: "26px" }}>Tin đăng mới</h2>
+              <h2 style={{ margin: "0", fontSize: "26px" }}>
+                Quản lí tin rao vặt
+              </h2>
             </div>
             <div
               style={{ display: "flex", gap: "16px" }}
@@ -217,6 +217,15 @@ export const Category = () => {
                       </span>
                     </div>
                   </div>
+                  <div className="col-gap">
+                    <button
+                      className="btn btn-danger"
+                      onClick={handleSearchClick}
+                      style={{ marginLeft: "10px" }}
+                    >
+                      Duyệt tin
+                    </button>
+                  </div>
                 </div>
                 <hr></hr>
               </div>
@@ -236,4 +245,4 @@ export const Category = () => {
   );
 };
 
-export default Category;
+export default AdsManager;
