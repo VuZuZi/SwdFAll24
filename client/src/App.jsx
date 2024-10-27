@@ -73,7 +73,7 @@ const App = () => {
               component={withLoading(PaidTransactions)}
             />
             <AdminRoute
-              path="/admin-product"
+              path="/admin-ads"
               component={withLoading(ProductManager)}
             />
             <Route path="/unauthorized" component={withLoading(Unauthorized)} />
