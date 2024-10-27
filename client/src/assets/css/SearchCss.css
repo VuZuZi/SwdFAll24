@@ -1,0 +1,261 @@
+.container-form-search {
+  width: 100%;
+  display: flex;
+  padding: 0 80px;
+  gap: 30px;
+}
+
+.item-container {
+  width: 65%;
+}
+
+.text-left {
+  text-align: left;
+}
+.col-gap {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.sticky-header {
+  position: sticky;
+    top: 90px;
+    z-index: 100;
+  background: linear-gradient(to right, #2d6e29 0%, #96f393 100%);
+  padding:  16px;
+}
+
+.flex-category {
+  display: flex;
+  gap: 6px;
+  flex-direction: column;
+  width: 15%;
+  margin-top: 155px;
+  min-width: 170px;
+  position: sticky;
+  top: 310px;
+  max-height: 500px;
+  overflow: auto;
+  scrollbar-width: thin; 
+  scrollbar-color: #888 #f1f1f1; 
+}
+
+.flex-category::-webkit-scrollbar {
+  width: 6px;
+}
+
+.flex-category::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.flex-category::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 10px;
+}
+
+.flex-category::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.category-list {
+  flex: 1;
+  margin-right: 20px;
+  text-align: left;
+}
+
+.sub-list {
+  padding-left: 20px;
+}
+
+.toggle-btn {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 10px;
+  cursor: pointer;
+  font-size: 18px;
+  color: #333;
+}
+
+.toggle-btn::before {
+  content: "- ";
+  font-weight: bold;
+}
+
+.toggle-btn.collapsed::before {
+  content: "- ";
+}
+
+li {
+  list-style: none;
+  margin-bottom: 10px;
+}
+
+.sub-list li {
+  margin-bottom: 5px;
+  font-size: 16px;
+  color: #555;
+  text-align: left;
+}
+
+/* Custom Styling */
+.category-container {
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.category-list {
+  padding: 0;
+}
+
+.category-list li {
+  padding: 5px 0;
+}
+
+.sub-list li {
+  padding-left: 15px;
+  line-height: 1.5;
+}
+
+.sub-list.collapse {
+  transition: height 0.3s ease;
+}
+
+.item-search {
+  display: flex;
+  gap: 16px;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+
+
+.search-container {
+ 
+    margin-bottom: 20px;
+  }
+  .in-cart-message {
+    font-size: 14px; 
+    width: 150px;
+    height: 6px;
+    text-align: center;
+  }
+  #search-bar {
+    padding: 10px 30px 10px 10px; 
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    box-sizing: border-box;
+    width: 500px;
+  }
+  
+  #search-button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 40px; 
+    border: none;
+    background: transparent;
+    cursor: pointer;
+  }
+  
+  #search-button i {
+    color: #213121;
+  }
+  
+
+  #search-button:hover i {
+    color: #55f968;
+  }
+
+  .product-item {
+    border: 1px solid #e0e0e0;
+    padding: 20px;
+  }
+  .product-item{
+    height: 125px;
+    width: 100%;
+    display: flex;
+    gap: 24px;
+  }
+  .portfolio-items img {
+    width: 100px; 
+    height: 100px;
+    padding: 0;
+    border: 0;
+  }
+  .addToCard {
+    background-color: #4caf50; 
+    color: white; 
+    padding: 5px 10px; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    margin-right: 8px;
+  }
+  
+  .addToCard:hover {
+    background-color: #45a049; 
+  }
+  
+  
+  .button-container-category {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+  }
+  .pagination button {
+    background-color: #4caf50;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    margin: 0 5px;
+    cursor: pointer;
+  }
+  
+  .pagination button:hover {
+    background-color: #45a049;
+  }
+  
+  .pagination button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+  }
+  
+  .btn-pagination {
+    background-color: #007bff; 
+    color: #ffffff; 
+  }
+  .btn-pagination:hover {
+    background-color: #45a049; 
+  }
+
+  .button-load-more {
+    background-color: #45a049;
+    color: #fff; 
+    padding: 10px 20px; 
+    border: none;
+    border-radius: 5px; 
+    cursor: pointer; 
+  
+  }
+  
+  .button-load-more:hover {
+    background-color: #45a049; 
+  }
+  .btn-load-more{
+    padding-bottom: 20px;
+  }
+  .no-results{
+    font-size: 20px;
+    margin: 30px;
+  }
+
+  hr {
+
+    width: 100%;
+}
+  

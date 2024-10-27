@@ -1,0 +1,78 @@
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
+
+.product-detail-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Căn giữa theo chiều ngang */
+  padding: 20px; /* Padding tổng thể */
+  max-width: 1200px; /* Giới hạn chiều rộng tối đa */
+  margin: 0 auto; /* Căn giữa */
+  margin-top: 120px;
+}
+
+.product-detail-content {
+  display: flex;
+  flex-direction: row; 
+  align-items: flex-start; 
+  justify-content: flex-start;
+  padding: 20px;
+  margin-top: 20px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  border-radius: 8px; 
+  background-color: #fff; 
+  width: 100%; 
+  max-width: 1000px; 
+  overflow: hidden; 
+}
+
+.product-detail-img {
+  flex: 1 1 300px; 
+  margin-right: 20px; 
+  max-width: 400px; 
+}
+
+.product-detail-image {
+  width: 100%; 
+  height: auto; 
+  border-radius: 4px; 
+  object-fit: cover;
+}
+
+.product-detail-info {
+  flex: 1; 
+  margin-top: 20px; 
+  overflow: hidden; 
+}
+
+.addToCardDetail {
+  margin-top: 15px;
+  background-color: #4caf50; 
+  color: white; 
+  padding: 10px 15px; 
+  border: none; 
+  border-radius: 5px; 
+  cursor: pointer; 
+  transition: background-color 0.3s;
+}
+
+.addToCardDetail:hover {
+  background-color: #45a049; 
+}
+
+
+
+.slick-list {
+  margin: 0 -5px;
+  max-height: 500px;
+}
+
+.sub-list a {
+  cursor: pointer;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.sub-list a:hover {
+  text-decoration: underline;
+}
