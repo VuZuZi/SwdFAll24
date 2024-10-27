@@ -24,11 +24,7 @@ const adController = {
   getAdById: async (req, res) => {
     const { id } = req.params;
     try {
-      console.log(id);
-      
       const ad = await adService.getAdById(id);
-      console.log(ad);
-      
       if (!ad) {
         return res.status(404).json({ error: "Ad not found" });
       }
