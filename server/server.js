@@ -9,7 +9,6 @@ const productRouter = require("./src/routers/productRoutes");
 const adRoute = require("./src/routers/adRoutes");
 const provinceRoutes = require("./src/routers/provinceRoutes");
 const categoryRoutes = require("./src/routers/categoryRoutes");
-const checkoutRouter = require("./src/routers/checkoutRoutes");
 const app = express();
 
 const PORT = process.env.PORT || 3000;
@@ -36,7 +35,6 @@ app.use("/product", productRouter);
 app.use("/ad", adRoute);
 app.use("/category", categoryRoutes);
 app.use('/province', provinceRoutes);
-app.use("/checkout", checkoutRouter);
 
 // Route để gửi email
 app.post("/sendEmail", async (req, res) => {
