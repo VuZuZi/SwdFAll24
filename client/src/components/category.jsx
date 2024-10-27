@@ -81,6 +81,7 @@ export const Category = () => {
     parentCategory.name
       ? setSelectedCategory(parentCategory.name)
       : setSelectedCategory("");
+      setSearchKeyword("");
   };
 
   useEffect(() => {

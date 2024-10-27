@@ -16,15 +16,38 @@ const seedDatabase = async () => {
     await Category.deleteMany({});
 
     const user = new User({
-      email: "testuser@example.com",
+      email: "testuser@gmail.com",
       first_name: "John",
       last_name: "Doe",
       phone: "123456789",
-      password: "password123",
+      password: "$2a$12$VDp1g8E4iE5s5c31NOxeWu6nRVVRoHWXsrxsYpbLaW/iXGTa4bLjm",
       role: "user",
     });
 
     await user.save();
+
+    const users = [
+      {
+        email: "admin@gmail.com",
+        first_name: "admin",
+        last_name: "admin",
+        phone: "0982009465",
+        password:
+          "$2a$12$VDp1g8E4iE5s5c31NOxeWu6nRVVRoHWXsrxsYpbLaW/iXGTa4bLjm",
+        role: "admin",
+      },
+      {
+        email: "dolv@gmail.com",
+        first_name: "Độ",
+        last_name: "Lê Văn",
+        phone: "0982009465",
+        password:
+          "$2a$12$VDp1g8E4iE5s5c31NOxeWu6nRVVRoHWXsrxsYpbLaW/iXGTa4bLjm",
+        role: "user",
+      },
+    ];
+
+    await User.insertMany(users);
 
     const ads = [
       {
