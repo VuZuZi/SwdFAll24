@@ -119,14 +119,6 @@ export const Profile = (props) => {
                 value={userData.email}
                 readOnly
               />
-              <p className="text-profile">Password:</p>
-              <input
-                className="input-profile"
-                type="password"
-                name="password"
-                value={userData.password}
-                readOnly
-              />
             </div>
             <button
               className="button-update"

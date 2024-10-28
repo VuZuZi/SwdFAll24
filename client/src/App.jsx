@@ -20,6 +20,7 @@ import AdminRoute from "./components/adminPage/AdminRoute.jsx";
 import Unauthorized from "./components/unauthorized.jsx";
 import Loading from "./components/loading.jsx";
 import withLoading from "./components/withLoading";
+import Post from './components/post'; 
 
 const App = () => {
   const [cart, setCart] = useState([]);
@@ -42,6 +43,7 @@ const App = () => {
             <Route path="/about" component={withLoading(About)} />
             <Route path="/profile" component={withLoading(Profile)} />
             <Route path="/admin" component={withLoading(AdminPage)} />
+            <Route path="/postAd" component={withLoading(Post)} />
             <Route path="/category">
               <Category cart={cart} addToCart={addToCart} />
             </Route>

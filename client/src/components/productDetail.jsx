@@ -61,7 +61,6 @@ const ProductDetail = ({ addToCart }) => {
     <div className="product-detail-container">
       <h2>Chi Tiết Sản Phẩm</h2>
       <div className="product-detail-content">
-        {/* Slider ảnh */}
         <div className="product-detail-img">
           <Slider {...sliderSettings}>
             {product.images.map((image, index) => (
