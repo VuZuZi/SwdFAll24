@@ -13,10 +13,7 @@ const PostAd = () => {
   const [subcategories, setSubcategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
 
-
   useEffect(() => {
-  
-
     const fetchCategories = async () => {
       try {
         const response = await axios.get("http://localhost:3000/category");
@@ -73,12 +70,12 @@ const PostAd = () => {
 
   const handleCategoryChange = (e, setFieldValue) => {
     const selected = e.target.value;
-    
+
     setFieldValue("category.name", selected);
     setSelectedCategory(selected);
     const category = categories.find((cat) => cat.name === selected);
     console.log(category);
-    
+
     if (category) {
       setSubcategories(category.subcategories);
     } else {
@@ -90,7 +87,6 @@ const PostAd = () => {
     const selected = e.target.value;
     alert("Chọn phân loại cho chuyên mục " + selected);
     setFieldValue("category.subcategories", selected);
-
   };
 
   const onSubmit = async (values, { setSubmitting, resetForm }) => {
@@ -101,7 +97,6 @@ const PostAd = () => {
       const decoded = jwtDecode(token);
       adData.postedBy = decoded.id_user;
 
-      
       await axios.post("http://localhost:3000/ad/create", adData);
       resetForm();
     } catch (error) {
@@ -192,7 +187,9 @@ const PostAd = () => {
                         as="select"
                         id="subcategories"
                         name="category.subcategories"
-                        onChange={(e) => handleCategorySubChange(e, setFieldValue)}
+                        onChange={(e) =>
+                          handleCategorySubChange(e, setFieldValue)
+                        }
                       >
                         <option value="">Chọn phân loại</option>
                         {subcategories && subcategories.length > 0 ? (
