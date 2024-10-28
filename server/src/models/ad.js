@@ -29,11 +29,9 @@ const adSchema = new mongoose.Schema({
   },
   phone: {
     type: String,
-    required: true,
   },
   email: {
     type: String,
-    required: true,
   },
   postedBy: {
     type: mongoose.Schema.Types.ObjectId,

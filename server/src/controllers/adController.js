@@ -2,13 +2,13 @@ const adService = require("../services/adService");
 
 const adController = {
   getAll: async (req, res) => {
-    const { keyword, category, address, subcategory, isAdmin } = req.query;
+    const { keyword, category, address, subcategories, isAdmin } = req.query;
     try {
       const ads = await adService.getFilteredAds(
         keyword,
         category,
         address,
-        subcategory,
+        subcategories,
         isAdmin
       );
       console.log("Received Query:", req.query);

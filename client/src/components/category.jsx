@@ -63,7 +63,7 @@ export const Category = () => {
       keyword: searchKeyword,
       category: selectedCategory,
       address: selectedAddress,
-      subcategory: selectedSubcategory,
+      subcategories: selectedSubcategory,
     };
     setSelectedSubcategory("");
     axios

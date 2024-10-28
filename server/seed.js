@@ -222,6 +222,7 @@ const seedDatabase = async () => {
           "https://xemayanhloc.com.vn/wp-content/uploads/2023/09/z4707313519557_42e6e5620090189570e33bf1a2e39b3a.jpg",
           "https://autobike.com.vn/wp-content/uploads/2022/09/honda-Air-blade-1.jpg",
         ],
+        approved: true,
       },
       {
         title: "Máy tính để bàn HP",
@@ -251,24 +252,28 @@ const seedDatabase = async () => {
       {
         title: "Bán xe máy Honda SH",
         description: "Xe máy Honda SH đời mới, máy êm, giá cả phải chăng.",
-        category: { name: "Xe cộ", subcategories: "Xe máy" },
+        category: { name: "Xe cộ", subcategories: ["Xe máy"] },
         price: 40000000,
         location: "Hà Nội",
-        images: ["https://images.unsplash.com/photo-1542291026-7eec264c27ff",
-          "https://images.unsplash.com/photo-1542291026-7eec264c27ff","https://images.unsplash.com/photo-1542291026-7eec264c27ff"
+        images: [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQV30SILvqtZeoO1ixBg_T2cxR3V4jPiIK9KQ&s",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQesATVlbQXYJmjaQPPSIMJp-KbkvK3RUITzipB1C1VpuFjkkD-VkHBE_-jCl6ZBUbX9RU&usqp=CAU",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTw_OtzJkYZkv2wTwgn8jtuXmE4boVm50d9A9UVFPr7wU_p00ADAfiEreyDQyDYjYhQJlI&usqp=CAU",
         ],
         postedBy: user._id,
+        approved: true,
       },
       {
         title: "Ô tô Toyota Camry 2021",
         description: "Ô tô Toyota Camry màu đen, đầy đủ tiện nghi.",
-        category: { name: "Xe cộ", subcategories: "Ô tô" },
+        category: { name: "Xe cộ", subcategories: ["Ô tô"] },
         price: 800000000,
         location: "Hồ Chí Minh",
         images: [
           "https://static.chotot.com/storage/chotot-kinhnghiem/xe/2021/04/acc1d4c1-cho-tot-xe-toyota-camry-1.jpg",
         ],
         postedBy: user._id,
+        approved: true,
       },
       {
         title: "Xe máy Honda Vision",
@@ -280,6 +285,7 @@ const seedDatabase = async () => {
         images: [
           "https://i2-vnexpress.vnecdn.net/2023/04/03/HondaVision1102023TheThao1jpg-1680509381.jpg?w=1200&h=0&q=100&dpr=1&fit=crop&s=XG3CWAMb2XXPn4UAqGWQ1w",
         ],
+        approved: true,
       },
       {
         title: "Nhà phố 3 tầng tại trung tâm",
@@ -292,6 +298,7 @@ const seedDatabase = async () => {
           "https://nhavn.vn/wp-content/uploads/2023/02/nha-pho-hien-dai-3-tang-A002-001.png",
           "https://shac.vn/wp-content/uploads/2021/10/nha-pho-3-tang-mat-tien-7m-rong-85m2.jpg",
         ],
+        approved: true,
       },
       {
         title: "iPhone 13 Pro Max",
@@ -318,6 +325,7 @@ const seedDatabase = async () => {
           "https://callabridal.com.vn/wp-content/uploads/2023/04/HM12.jpg",
           "https://tuarts.net/wp-content/uploads/2023/10/387102950_331415956111798_5431050983682106317_n-533x800.jpg",
         ],
+        approved: true,
       },
       {
         title: "Ghế massage cao cấp",
@@ -354,6 +362,7 @@ const seedDatabase = async () => {
         location: "Hà Nội",
         postedBy: user._id,
         images: ["https://donghoolevs.vn/wp-content/uploads/2022/11/382.5.png"],
+        approved: true,
       },
       {
         title: "Tủ quần áo gỗ sồi",
@@ -377,6 +386,7 @@ const seedDatabase = async () => {
         images: [
           "https://mbmart.com.vn/uploads/2024/03/xe-dap-the-thao-tay-cong-kma-1.jpg.webp",
         ],
+        approved: true,
       },
       {
         title: "Văn phòng cho thuê quận 1",

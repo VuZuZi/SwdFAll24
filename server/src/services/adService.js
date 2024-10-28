@@ -28,7 +28,7 @@ const adService = {
     }
   },
 
-  getFilteredAds: async (keyword, category, address, subcategory, isAdmin) => {
+  getFilteredAds: async (keyword, category, address, subcategories, isAdmin) => {
     try {
       const filter = {};
 
@@ -51,8 +51,8 @@ const adService = {
         filter.location = address;
       }
 
-      if (subcategory) {
-        filter["category.subcategory"] = subcategory;
+      if (subcategories) {
+        filter["category.subcategories"] = subcategories;
       }
 
       const ads = await Ad.find(filter)
