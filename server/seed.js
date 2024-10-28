@@ -62,7 +62,7 @@ const seedDatabase = async () => {
       {
         title: "Bán iPhone 12 Pro Max",
         description: "Điện thoại mới 99%, đầy đủ phụ kiện.",
-        category: { name: "Đồ điện tử", subcategory: ["Điện thoại"] },
+        category: { name: "Đồ điện tử", subcategories: ["Điện thoại"] },
         price: 25000000,
         location: "Hà Nội",
         postedBy: user._id,
@@ -76,7 +76,7 @@ const seedDatabase = async () => {
       {
         title: "Samsung Galaxy S21 Ultra",
         description: "Mới 98%, không trầy xước, bảo hành 6 tháng.",
-        category: { name: "Đồ điện tử", subcategory: ["Điện thoại"] },
+        category: { name: "Đồ điện tử", subcategories: ["Điện thoại"] },
         price: 22000000,
         location: "TP. Hồ Chí Minh",
         postedBy: user._id,
@@ -89,7 +89,7 @@ const seedDatabase = async () => {
       {
         title: "Google Pixel 5",
         description: "Điện thoại xách tay Mỹ, hiệu năng tốt, camera sắc nét.",
-        category: { name: "Đồ điện tử", subcategory: ["Điện thoại"] },
+        category: { name: "Đồ điện tử", subcategories: ["Điện thoại"] },
         price: 16000000,
         location: "Đà Nẵng",
         postedBy: user._id,
@@ -102,7 +102,7 @@ const seedDatabase = async () => {
       {
         title: "iPhone 11",
         description: "Mới sử dụng 1 năm, pin còn tốt, không móp méo.",
-        category: { name: "Đồ điện tử", subcategory: ["Điện thoại"] },
+        category: { name: "Đồ điện tử", subcategories: ["Điện thoại"] },
         price: 13000000,
         location: "Hải Phòng",
         postedBy: user._id,
@@ -115,7 +115,7 @@ const seedDatabase = async () => {
       {
         title: "OnePlus 9 Pro",
         description: "Hiệu năng mạnh, màn hình sắc nét, camera đẹp.",
-        category: { name: "Đồ điện tử", subcategory: ["Điện thoại"] },
+        category: { name: "Đồ điện tử", subcategories: ["Điện thoại"] },
         price: 18000000,
         location: "Cần Thơ",
         postedBy: user._id,
@@ -127,7 +127,7 @@ const seedDatabase = async () => {
       {
         title: "Xiaomi Mi 11",
         description: "Mới mua 3 tháng, máy như mới, giá cả phải chăng.",
-        category: { name: "Đồ điện tử", subcategory: ["Điện thoại"] },
+        category: { name: "Đồ điện tử", subcategories: ["Điện thoại"] },
         price: 10000000,
         location: "Huế",
         postedBy: user._id,
@@ -139,7 +139,7 @@ const seedDatabase = async () => {
       {
         title: "OPPO Reno5",
         description: "Điện thoại đẹp, camera cực nét, bảo hành còn 8 tháng.",
-        category: { name: "Đồ điện tử", subcategory: ["Điện thoại"] },
+        category: { name: "Đồ điện tử", subcategories: ["Điện thoại"] },
         price: 8000000,
         location: "Nha Trang",
         postedBy: user._id,
@@ -151,7 +151,7 @@ const seedDatabase = async () => {
       {
         title: "Vsmart Active 3",
         description: "Máy sử dụng ổn định, camera tốt, pin khỏe.",
-        category: { name: "Đồ điện tử", subcategory: ["Điện thoại"] },
+        category: { name: "Đồ điện tử", subcategories: ["Điện thoại"] },
         price: 5000000,
         location: "Bình Định",
         postedBy: user._id,
@@ -163,7 +163,7 @@ const seedDatabase = async () => {
       {
         title: "iPhone XR",
         description: "Điện thoại mới 95%, chưa sửa chữa, bao test.",
-        category: { name: "Đồ điện tử", subcategory: ["Điện thoại"] },
+        category: { name: "Đồ điện tử", subcategories: ["Điện thoại"] },
         price: 9000000,
         location: "Quảng Ninh",
         postedBy: user._id,
@@ -175,7 +175,7 @@ const seedDatabase = async () => {
       {
         title: "Huawei P30 Pro",
         description: "Máy chụp ảnh đẹp, hiệu năng mạnh, bảo hành còn 6 tháng.",
-        category: { name: "Đồ điện tử", subcategory: ["Điện thoại"] },
+        category: { name: "Đồ điện tử", subcategories: ["Điện thoại"] },
         price: 7000000,
         location: "Hải Dương",
         postedBy: user._id,
@@ -187,7 +187,7 @@ const seedDatabase = async () => {
       {
         title: "IPhone 12 Pro Max",
         description: "Điện thoại mới 99%, đầy đủ phụ kiện.",
-        category: { name: "Đồ điện tử", subcategory: ["Điện thoại"] },
+        category: { name: "Đồ điện tử", subcategories: ["Điện thoại"] },
         price: 25000000,
         location: "Hà Nội",
         postedBy: user._id,
@@ -200,7 +200,7 @@ const seedDatabase = async () => {
       {
         title: "Laptop Dell XPS 13",
         description: "Laptop mỏng nhẹ, cấu hình mạnh, màn hình Full HD.",
-        category: { name: "Đồ điện tử", subcategory: ["Máy tính"] },
+        category: { name: "Đồ điện tử", subcategories: ["Máy tính"] },
         price: 18000000,
         location: "Hồ Chí Minh",
         postedBy: user._id,
@@ -213,7 +213,7 @@ const seedDatabase = async () => {
       {
         title: "Xe máy Honda Air Blade",
         description: "Xe mới mua 6 tháng, chính chủ, màu đen.",
-        category: { name: "Xe cộ", subcategory: ["Xe máy"] },
+        category: { name: "Xe cộ", subcategories: ["Xe máy"] },
         price: 35000000,
         location: "Đà Nẵng",
         postedBy: user._id,
@@ -226,7 +226,7 @@ const seedDatabase = async () => {
       {
         title: "Máy tính để bàn HP",
         description: "Máy tính để bàn mới, bảo hành 12 tháng.",
-        category: { name: "Đồ điện tử", subcategory: ["Máy tính"] },
+        category: { name: "Đồ điện tử", subcategories: ["Máy tính"] },
         price: 12000000,
         location: "Cần Thơ",
         postedBy: user._id,
@@ -238,7 +238,7 @@ const seedDatabase = async () => {
       {
         title: "Ghế sofa cao cấp",
         description: "Ghế sofa mới, thiết kế hiện đại, rất thoải mái.",
-        category: { name: "Nội thất", subcategory: ["Ghế"] },
+        category: { name: "Nội thất", subcategories: ["Ghế"] },
         price: 7000000,
         location: "Hà Nội",
         postedBy: user._id,
@@ -251,7 +251,7 @@ const seedDatabase = async () => {
       {
         title: "Bán xe máy Honda SH",
         description: "Xe máy Honda SH đời mới, máy êm, giá cả phải chăng.",
-        category: { name: "Xe cộ", subcategory: "Xe máy" },
+        category: { name: "Xe cộ", subcategories: "Xe máy" },
         price: 40000000,
         location: "Hà Nội",
         images: ["https://images.unsplash.com/photo-1542291026-7eec264c27ff",
@@ -262,7 +262,7 @@ const seedDatabase = async () => {
       {
         title: "Ô tô Toyota Camry 2021",
         description: "Ô tô Toyota Camry màu đen, đầy đủ tiện nghi.",
-        category: { name: "Xe cộ", subcategory: "Ô tô" },
+        category: { name: "Xe cộ", subcategories: "Ô tô" },
         price: 800000000,
         location: "Hồ Chí Minh",
         images: [
@@ -273,7 +273,7 @@ const seedDatabase = async () => {
       {
         title: "Xe máy Honda Vision",
         description: "Xe máy Honda Vision đời mới, tiết kiệm xăng, máy êm.",
-        category: { name: "Xe cộ", subcategory: ["Xe máy"] },
+        category: { name: "Xe cộ", subcategories: ["Xe máy"] },
         price: 32000000,
         location: "Hồ Chí Minh",
         postedBy: user._id,
@@ -284,7 +284,7 @@ const seedDatabase = async () => {
       {
         title: "Nhà phố 3 tầng tại trung tâm",
         description: "Nhà phố 3 tầng, diện tích 100m2, tiện nghi đầy đủ.",
-        category: { name: "Bất động sản", subcategory: ["Nhà đất"] },
+        category: { name: "Bất động sản", subcategories: ["Nhà đất"] },
         price: 2500000000,
         location: "Đà Nẵng",
         postedBy: user._id,
@@ -297,7 +297,7 @@ const seedDatabase = async () => {
         title: "iPhone 13 Pro Max",
         description:
           "Điện thoại iPhone 13 Pro Max, hàng mới 100%, bảo hành 1 năm.",
-        category: { name: "Đồ điện tử", subcategory: ["Điện thoại"] },
+        category: { name: "Đồ điện tử", subcategories: ["Điện thoại"] },
         price: 27000000,
         location: "Hà Nội",
         postedBy: user._id,
@@ -309,7 +309,7 @@ const seedDatabase = async () => {
         title: "Đầm cưới sang trọng",
         description:
           "Đầm cưới thiết kế tinh tế, sang trọng, phù hợp mọi vóc dáng.",
-        category: { name: "Thời trang", subcategory: ["Đầm cưới"] },
+        category: { name: "Thời trang", subcategories: ["Đầm cưới"] },
         price: 1500000,
         location: "Hải Phòng",
         approved: true,
@@ -322,7 +322,7 @@ const seedDatabase = async () => {
       {
         title: "Ghế massage cao cấp",
         description: "Ghế massage công nghệ mới, giảm đau nhức và căng thẳng.",
-        category: { name: "Nội thất", subcategory: ["Ghế"] },
+        category: { name: "Nội thất", subcategories: ["Ghế"] },
         price: 8500000,
         location: "Nghệ An",
         approved: true,
@@ -336,7 +336,7 @@ const seedDatabase = async () => {
         title: "Laptop Dell Inspiron 15",
         description:
           "Laptop Dell Inspiron, cấu hình mạnh, phù hợp cho công việc.",
-        category: { name: "Đồ điện tử", subcategory: ["Máy tính"] },
+        category: { name: "Đồ điện tử", subcategories: ["Máy tính"] },
         price: 18000000,
         location: "Cần Thơ",
         approved: true,
@@ -349,7 +349,7 @@ const seedDatabase = async () => {
         title: "Đồng hồ đeo tay cao cấp",
         description:
           "Đồng hồ đeo tay sang trọng, chất liệu cao cấp, chống nước.",
-        category: { name: "Thời trang", subcategory: ["Trang sức"] },
+        category: { name: "Thời trang", subcategories: ["Trang sức"] },
         price: 5000000,
         location: "Hà Nội",
         postedBy: user._id,
@@ -358,7 +358,7 @@ const seedDatabase = async () => {
       {
         title: "Tủ quần áo gỗ sồi",
         description: "Tủ quần áo gỗ sồi tự nhiên, bền đẹp, không cong vênh.",
-        category: { name: "Nội thất", subcategory: ["Tủ"] },
+        category: { name: "Nội thất", subcategories: ["Tủ"] },
         price: 12000000,
         location: "Thanh Hóa",
         postedBy: user._id,
@@ -370,7 +370,7 @@ const seedDatabase = async () => {
         title: "Xe đạp thể thao",
         description:
           "Xe đạp thể thao bền, khung nhôm nhẹ, phù hợp đi đường dài.",
-        category: { name: "Xe cộ", subcategory: ["Xe đạp"] },
+        category: { name: "Xe cộ", subcategories: ["Xe đạp"] },
         price: 4500000,
         location: "Hà Nội",
         postedBy: user._id,
@@ -382,7 +382,7 @@ const seedDatabase = async () => {
         title: "Văn phòng cho thuê quận 1",
         description:
           "Văn phòng cho thuê, vị trí trung tâm quận 1, diện tích 100m2.",
-        category: { name: "Bất động sản", subcategory: ["Văn phòng"] },
+        category: { name: "Bất động sản", subcategories: ["Văn phòng"] },
         price: 30000000,
         location: "Hồ Chí Minh",
         postedBy: user._id,
@@ -395,7 +395,7 @@ const seedDatabase = async () => {
       {
         title: "TV Samsung 4K 55 inch",
         description: "TV Samsung 4K, màn hình 55 inch, hình ảnh sắc nét.",
-        category: { name: "Đồ điện tử", subcategory: ["TV"] },
+        category: { name: "Đồ điện tử", subcategories: ["TV"] },
         price: 11000000,
         location: "Bình Dương",
         postedBy: user._id,
@@ -408,7 +408,7 @@ const seedDatabase = async () => {
         title: "Bàn làm việc gỗ công nghiệp",
         description:
           "Bàn làm việc gỗ công nghiệp chắc chắn, thiết kế hiện đại.",
-        category: { name: "Nội thất", subcategory: ["Bàn"] },
+        category: { name: "Nội thất", subcategories: ["Bàn"] },
         price: 2000000,
         location: "Hải Phòng",
         postedBy: user._id,
@@ -421,7 +421,7 @@ const seedDatabase = async () => {
         title: "Phụ tùng xe máy Honda chính hãng",
         description:
           "Phụ tùng chính hãng cho xe máy Honda, bền và đảm bảo an toàn.",
-        category: { name: "Xe cộ", subcategory: ["Phụ tùng, linh kiện"] },
+        category: { name: "Xe cộ", subcategories: ["Phụ tùng, linh kiện"] },
         price: 300000,
         location: "Bình Định",
         postedBy: user._id,
@@ -435,7 +435,7 @@ const seedDatabase = async () => {
         title: "Đầm dạ hội lấp lánh",
         description:
           "Đầm dạ hội lấp lánh, sang trọng, phù hợp cho các buổi tiệc.",
-        category: { name: "Thời trang", subcategory: ["Áo Quần"] },
+        category: { name: "Thời trang", subcategories: ["Áo Quần"] },
         price: 1200000,
         location: "Vũng Tàu",
         postedBy: user._id,
@@ -447,7 +447,7 @@ const seedDatabase = async () => {
       {
         title: "Laptop gaming MSI",
         description: "Laptop gaming MSI cấu hình cao, chơi game mượt mà.",
-        category: { name: "Đồ điện tử", subcategory: ["Máy tính"] },
+        category: { name: "Đồ điện tử", subcategories: ["Máy tính"] },
         price: 30000000,
         location: "Quảng Ninh",
         postedBy: user._id,
@@ -460,7 +460,7 @@ const seedDatabase = async () => {
         title: "Tủ lạnh LG Inverter 250L",
         description:
           "Tủ lạnh LG công nghệ Inverter, tiết kiệm điện, dung tích 250L.",
-        category: { name: "Đồ điện tử", subcategory: ["TV"] },
+        category: { name: "Đồ điện tử", subcategories: ["Tủ lạnh"] },
         price: 8000000,
         location: "Nghệ An",
         postedBy: user._id,

@@ -19,12 +19,20 @@ h2 {
   
   .form-group {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: baseline;
     margin-bottom: 10px;
+  }
+
+  .flex-item-post {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+    align-items: center;
   }
   
   .form-group label {
-    flex: 0 0 150px;
+    flex: 0 0 120px;
     margin-right: 10px;
     font-size: 16px;
     font-weight: bold;
@@ -49,12 +57,27 @@ h2 {
   .submit-button:hover {
     background-color: #0056b3;
   }
-  .form-group div {
-    display: flex;
-    gap: 15px;
-  }
+
+
   
   .form-group label {
     font-size: 16px;
     font-weight: bold;
   }
+
+  .error {
+    color: #e74c3c;
+    font-size: 0.875em;
+    margin: 0 !important;
+  }
+  
+  .error::before {
+    content: "⚠ ";
+    font-weight: bold;
+  }
+  
+  .form-group .error {
+    display: block;
+    margin-left: 5px;
+  }
+

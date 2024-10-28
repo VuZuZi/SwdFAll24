@@ -50,6 +50,17 @@ const adController = {
       res.status(500).json({ error: "Đã xảy ra lỗi khi duyệt bài đăng" });
     }
   },
+
+  createAd: async (req, res) => {
+    try {
+      const adData = req.body;  
+      const newAd = await adService.createAd(adData);
+      res.status(201).json(newAd);
+    } catch (error) {
+      console.error("Error creating ad:", error);
+      res.status(500).json({ error: "Error creating ad" });
+    }
+  },
 };
 
 module.exports = adController;

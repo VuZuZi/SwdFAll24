@@ -86,6 +86,20 @@ const adService = {
       throw error;
     }
   },
+
+  createAd: async (adData) => { 
+    try {
+      adData.images = ["https://firebase-url/image1.jpg", "https://firebase-url/image2.jpg"];
+      adData.postedBy = "671f9953e75bb08ac1ba4a60";
+      console.log(adData.category.subcategory);
+      
+      const newAd = new Ad(adData);
+      return await newAd.save();
+    } catch (error) {
+      console.error("Error creating ad:", error);
+      throw error;
+    }
+  },
 };
 
 module.exports = adService;

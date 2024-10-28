@@ -16,6 +16,8 @@ export const Navigation = (props) => {
     if (token) {
       try {
         const decoded = jwtDecode(token);
+        console.log(decoded);
+        
         setUserRole(decoded.role);
       } catch (error) {
         console.log("Error decoding token: ", error);
