@@ -85,7 +85,6 @@ const PostAd = () => {
 
   const handleCategorySubChange = (e, setFieldValue) => {
     const selected = e.target.value;
-    alert("Chọn phân loại cho chuyên mục " + selected);
     setFieldValue("category.subcategories", selected);
   };
 

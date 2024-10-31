@@ -22,8 +22,6 @@ import AdminRoute from "./components/adminPage/AdminRoute.jsx";
 import Unauthorized from "./components/unauthorized.jsx";
 import Loading from "./components/loading.jsx";
 import withLoading from "./components/withLoading";
-import Post from './components/post'; 
-
 const App = () => {
   const [cart, setCart] = useState([]);
   const addToCart = (product) => {

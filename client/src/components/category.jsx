@@ -46,9 +46,6 @@ export const Category = () => {
   const fetchAds = async () => {
     try {
       const response = await axios.get("http://localhost:3000/ad/");
-      alert(response.data.length);
-      
-
       setAds(response.data);
       console.log("ads:", response.data);
     } catch (error) {
