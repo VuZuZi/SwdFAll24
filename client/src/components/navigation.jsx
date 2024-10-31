@@ -16,8 +16,6 @@ export const Navigation = (props) => {
     if (token) {
       try {
         const decoded = jwtDecode(token);
-        console.log(decoded);
-        
         setUserRole(decoded.role);
       } catch (error) {
         console.log("Error decoding token: ", error);
@@ -44,6 +42,9 @@ export const Navigation = (props) => {
     height: "60px",
     borderRadius: "50%",
     overflow: "hidden",
+  };
+  const handlePostAd = () => {
+    history.push("/postAd"); // Chuyển hướng đến trang đăng tin
   };
 
   const imageStyle = {
@@ -89,92 +90,77 @@ export const Navigation = (props) => {
           id="bs-example-navbar-collapse-1"
         >
           <div style={{ display: "flex" }}>
-          <ul className="nav navbar-nav navbar-right">
-            {userRole !== "admin" && (
-              <>
-                {/* <li>
-                  <a
-                    className="page-scroll"
-                    onClick={() => handleNavigation("/order-detail")}
-                  >
-                    Order
-                  </a>
-                </li> */}
-                {/* <li>
-                  <a
-                    className="page-scroll"
-                    onClick={() => handleNavigation("/cart")}
-                  >
-                    Giỏ Hàng{" "}
-                    {cartLength > 0 && (
-                      <span className="cart-counter">({cartLength})</span>
-                    )}
-                  </a>
-                </li> */}
-              </>
-            )}
-
-            <li>
-              <a
-                className="page-scroll"
-                onClick={() => handleNavigation("/category")}
-              >
-                Trang chủ
-              </a>
-            </li>
-            <li>
-              <a
-                className="page-scroll"
-                onClick={() => handleNavigation("/about")}
-              >
-                Chúng Tôi
-              </a>
-            </li>
-
-            {isLoggedIn && (
-              <li>
-                <a
-                  className="page-scroll"
-                  onClick={() => handleNavigation("/profile")}
-                >
-                  Tài Khoản
-                </a>
-              </li>
-            )}
-            {userRole === "admin" && (
-              <li>
-                <a
-                  className="page-scroll"
-                  onClick={() => handleNavigation("/admin")}
-                >
-                  Quản Lý
-                </a>
-              </li>
-            )}
-
-            <li>
-              {isLoggedIn ? (
-                <a className="page-scroll" onClick={handleLogout}>
-                  Đăng Xuất
-                </a>
-              ) : (
-                <a
-                  className="page-scroll"
-                  onClick={() => handleNavigation("/login")}
-                >
-                  Đăng Nhập
-                </a>
+            <ul className="nav navbar-nav navbar-right">
+              {userRole !== "admin" && (
+                <>
+                  {/* Các mục khác nếu cần */}
+                </>
               )}
-            </li>
-          </ul>
-          {/* <input type="text" /> */}
-          <button
+
+              <li>
+                <a
+                  className="page-scroll"
+                  onClick={() => handleNavigation("/category")}
+                >
+                  Trang chủ
+                </a>
+              </li>
+              <li>
+                <a
+                  className="page-scroll"
+                  onClick={() => handleNavigation("/about")}
+                >
+                  Chúng Tôi
+                </a>
+              </li>
+
+              {isLoggedIn && (
+                <li>
+                  <a
+                    className="page-scroll"
+                    onClick={() => handleNavigation("/profile")}
+                  >
+                    Tài Khoản
+                  </a>
+                </li>
+              )}
+              {userRole === "admin" && (
+                <li>
+                  <a
+                    className="page-scroll"
+                    onClick={() => handleNavigation("/admin")}
+                  >
+                    Quản Lý
+                  </a>
+                </li>
+              )}
+
+              <li>
+                {isLoggedIn ? (
+                  <a className="page-scroll" onClick={handleLogout}>
+                    Đăng Xuất
+                  </a>
+                ) : (
+                  <a
+                    className="page-scroll"
+                    onClick={() => handleNavigation("/login")}
+                  >
+                    Đăng Nhập
+                  </a>
+                )}
+              </li>
+            </ul>
+            {/* Chỉ hiển thị nút Đăng Tin nếu người dùng đã đăng nhập */}
+            {isLoggedIn && (
+              <button
                 className="btn btn-success"
-                // onClick={handlePostAd}
+                onClick={handlePostAd}
                 style={{ marginLeft: "10px" }}
-              >Đăng tin</button>
+              >
+                Đăng tin
+              </button>
+            )}
           </div>
-         
         </div>
       </div>
     </nav>
