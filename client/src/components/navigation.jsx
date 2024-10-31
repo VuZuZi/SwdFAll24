@@ -56,6 +56,7 @@ export const Navigation = (props) => {
   const handleNavigation = (path) => {
     history.push(path);
   };
+  
 
   return (
     <nav id="menu" className="navbar navbar-default navbar-fixed-top">

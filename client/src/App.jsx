@@ -6,6 +6,8 @@ import About  from "./components/about";
 import { Contact } from "./components/contact";
 import { Category } from "./components/category";
 import { Login } from "./components/login";
+import {NewPostForm} from "./components/post.jsx";
+import Post from './components/post'; 
 import ProductDetail from "./components/productDetail.jsx";
 import "./App.css";
 import { Profile } from "./components/profile";
@@ -24,9 +26,9 @@ import Post from './components/post';
 
 const App = () => {
   const [cart, setCart] = useState([]);
-
   const addToCart = (product) => {
     setCart([...cart, product]);
+    
   };
 
   return (
@@ -37,6 +39,8 @@ const App = () => {
           <ToastContainer />
 
           <Switch>
+          <Route path="/postAd" component={withLoading(Post)} />
+            <Route path="/postAd" component={withLoading(Post)} />
             <Route path="/login" component={withLoading(Login)} />
             <Route path="/" exact component={withLoading(Header)} />
             <Route path="/services" component={withLoading(Service)} />
