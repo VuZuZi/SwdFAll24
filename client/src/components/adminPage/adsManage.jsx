@@ -9,7 +9,6 @@ import { toast } from "react-toastify";
 
 const AdsManager = () => {
   const [ads, setAds] = useState([]);
-  const [numberOfDisplayedProducts, setNumberOfDisplayedProducts] = useState(9);
   const [provinces, setProvinces] = useState([]);
   const [categories, setCategories] = useState([]);
   const [searchKeyword, setSearchKeyword] = useState("");
@@ -46,7 +45,6 @@ const AdsManager = () => {
     const query = {
       isAdmin: true,
     };
-    setSelectedSubcategory("");
     axios
       .get("http://localhost:3000/ad/", { params: query })
       .then((res) => setAds(res.data))
@@ -58,7 +56,7 @@ const AdsManager = () => {
       keyword: searchKeyword,
       category: selectedCategory,
       address: selectedAddress,
-      subcategory: selectedSubcategory,
+      subcategories: selectedSubcategory,
       isAdmin: true,
     };
     setSelectedSubcategory("");
@@ -77,12 +75,18 @@ const AdsManager = () => {
     const parentCategory = categories.find((category) =>
       category.subcategories.includes(subcategory)
     );
-
     parentCategory.name
       ? setSelectedCategory(parentCategory.name)
       : setSelectedCategory("");
     setSearchKeyword("");
+    console.log(parentCategory.name);
   };
+
+  useEffect(() => {
+    if (selectedSubcategory) {
+      handleSearchClick();
+    }
+  }, [selectedSubcategory]);
 
   const handleToggleApproval = async (adId, isCurrentlyApproved) => {
     try {
@@ -106,17 +110,6 @@ const AdsManager = () => {
     } catch (error) {
       toast.error("Lỗi khi cập nhật trạng thái duyệt:", { autoClose: 3000 });
     }
-  };
-
-  useEffect(() => {
-    if (selectedSubcategory) {
-      handleSearchClick();
-    }
-  }, [selectedSubcategory]);
-
-  const loadMoreProducts = () => {
-    const newNumberOfDisplayedProducts = numberOfDisplayedProducts + 9;
-    setNumberOfDisplayedProducts(newNumberOfDisplayedProducts);
   };
 
   const formatPrice = (price) => {
@@ -261,13 +254,6 @@ const AdsManager = () => {
               </div>
             ))}
           </div>
-          {numberOfDisplayedProducts < ads.length && (
-            <div className="btn-load-more">
-              <button onClick={loadMoreProducts} className="button-load-more">
-                Xem Thêm
-              </button>
-            </div>
-          )}
         </div>
         <div></div>
       </div>

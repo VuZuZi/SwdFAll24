@@ -11,8 +11,9 @@ const adController = {
         subcategories,
         isAdmin
       );
-      console.log("Received Query:", req.query);
-      console.log(ads.length);
+
+      console.log(subcategories);
+      
 
       res.status(200).json(ads);
     } catch (error) {
