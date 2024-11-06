@@ -11,7 +11,6 @@ import { toast } from "react-toastify";
 
 export const Category = () => {
   const [ads, setAds] = useState([]);
-  const [numberOfDisplayedProducts, setNumberOfDisplayedProducts] = useState(9);
   const [provinces, setProvinces] = useState([]);
   const [categories, setCategories] = useState([]);
   const [searchKeyword, setSearchKeyword] = useState("");
@@ -48,7 +47,6 @@ export const Category = () => {
     try {
       const response = await axios.get("http://localhost:3000/ad/");
       setAds(response.data);
-      console.log("ads:", response.data);
     } catch (error) {
       console.error("Error fetching products", error);
     }
@@ -96,10 +94,6 @@ export const Category = () => {
     }
   }, [selectedSubcategory]);
 
-  const loadMoreProducts = () => {
-    const newNumberOfDisplayedProducts = numberOfDisplayedProducts + 9;
-    setNumberOfDisplayedProducts(newNumberOfDisplayedProducts);
-  };
 
   const formatPrice = (price) => {
     return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
@@ -229,13 +223,6 @@ export const Category = () => {
               </div>
             ))}
           </div>
-          {numberOfDisplayedProducts < ads.length && (
-            <div className="btn-load-more">
-              <button onClick={loadMoreProducts} className="button-load-more">
-                Xem Thêm
-              </button>
-            </div>
-          )}
         </div>
         <div></div>
       </div>

@@ -243,7 +243,7 @@ const AdsManager = () => {
                   </div>
                   <div className="col-gap">
                     <button
-                      className={`btn ${
+                      className={`btn btn-custom-search ${
                         product.approved ? "btn-success" : "btn-danger"
                       }`}
                       style={{ marginLeft: "10px" }}

@@ -22,7 +22,7 @@ const adController = {
   },
 
   getAdById: async (req, res) => {
-    const { id } = req.params;
+    const { id } = req.params; 
     try {
       const ad = await adService.getAdById(id);
       if (!ad) {
@@ -53,7 +53,7 @@ const adController = {
 
   createAd: async (req, res) => {
     try {
-      const adData = req.body;  
+      const adData = req.body;       
       const newAd = await adService.createAd(adData);
       res.status(201).json(newAd);
     } catch (error) {

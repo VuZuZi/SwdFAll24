@@ -5,13 +5,16 @@ import "../assets/css/PostCss.css";
 import { storage } from "../components/FireBase/firebaseConfig";
 import * as Yup from "yup";
 import { jwtDecode } from "jwt-decode";
+import { toast } from "react-toastify";
 
 import { ref, uploadBytes, getDownloadURL, listAll } from "firebase/storage";
 
 const PostAd = () => {
+  const [provinces, setProvinces] = useState([]);
   const [categories, setCategories] = useState([]);
   const [subcategories, setSubcategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
+  const [selectedAddress, setSelectedAddress] = useState("");
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -24,6 +27,17 @@ const PostAd = () => {
       }
     };
 
+    const fetchProvinces = async () => {
+      try {
+        const response = await axios.get("http://localhost:3000/province");
+
+        setProvinces(response.data);
+      } catch (error) {
+        console.error("Error fetching provinces:", error);
+      }
+    };
+
+    fetchProvinces();
     fetchCategories();
   }, []);
 
@@ -43,10 +57,17 @@ const PostAd = () => {
   };
 
   const uploadImage = async (file) => {
-    const storageRef = ref(storage, `images/${file.name}`);
-    await uploadBytes(storageRef, file);
-    const url = await getDownloadURL(storageRef);
-    return url;
+    try {
+      const storageRef = ref(storage, `images/${file.name}`);
+      await uploadBytes(storageRef, file);
+      const url = await getDownloadURL(storageRef);
+      console.log(url);
+
+      return url;
+    } catch (error) {
+      console.error("Error uploading image:", error);
+      throw error;
+    }
   };
 
   const validationSchema = Yup.object({
@@ -56,7 +77,12 @@ const PostAd = () => {
     email: Yup.string()
       .email("Địa chỉ email không hợp lệ!")
       .required("Email không được để trống!"),
-    location: Yup.string().required("Địa chỉ không được để trống!"),
+    location: Yup.string()
+      .required("Địa chỉ không được để trống!")
+      .oneOf(
+        provinces.map((province) => province.name),
+        "Địa chỉ không hợp lệ!"
+      ),
     category: Yup.object().shape({
       name: Yup.string().required("Chuyên mục không được để trống!"),
       subcategories: Yup.string().required("Phân loại không được để trống!"),
@@ -74,7 +100,6 @@ const PostAd = () => {
     setFieldValue("category.name", selected);
     setSelectedCategory(selected);
     const category = categories.find((cat) => cat.name === selected);
-    console.log(category);
 
     if (category) {
       setSubcategories(category.subcategories);
@@ -90,13 +115,20 @@ const PostAd = () => {
 
   const onSubmit = async (values, { setSubmitting, resetForm }) => {
     try {
+      console.log(values);
+
       const imageUrls = await Promise.all(values.images.map(uploadImage));
+      console.log("oke chua loi 1");
       const adData = { ...values, images: imageUrls };
       const token = localStorage.getItem("token");
       const decoded = jwtDecode(token);
+
       adData.postedBy = decoded.id_user;
 
+      console.log("oke chua loi 2");
+
       await axios.post("http://localhost:3000/ad/create", adData);
+      toast.success("Đăng tin thành công!", { autoClose: 3000 });
       resetForm();
     } catch (error) {
       console.error("Error posting ad:", error);
@@ -116,7 +148,7 @@ const PostAd = () => {
             validationSchema={validationSchema}
             onSubmit={onSubmit}
           >
-            {({ isSubmitting, setFieldValue }) => (
+            {({ values, isSubmitting, setFieldValue }) => (
               <Form>
                 <div className="form-group">
                   <div className="flex-item-post">
@@ -145,7 +177,21 @@ const PostAd = () => {
                 <div className="form-group">
                   <div className="flex-item-post">
                     <label htmlFor="location">Địa chỉ:</label>
-                    <Field type="text" id="location" name="location" />
+                    <select
+                      id="address-select"
+                      value={selectedAddress}
+                      onChange={(e) => {
+                        setSelectedAddress(e.target.value);
+                        setFieldValue("location", e.target.value);
+                      }}
+                    >
+                      <option value="">Chọn địa chỉ</option>
+                      {provinces.map((province) => (
+                        <option key={province.id} value={province.name}>
+                          {province.name}
+                        </option>
+                      ))}
+                    </select>
                   </div>
                   <ErrorMessage
                     name="location"
@@ -247,10 +293,30 @@ const PostAd = () => {
                       multiple
                       onChange={(e) => {
                         const files = Array.from(e.target.files);
-                        setFieldValue("images", files);
+                        setFieldValue("images", [...values.images, ...files]);
                       }}
                     />
                   </div>
+                </div>
+
+                <div>
+                  {values.images && values.images.length > 0 && (
+                    <div>
+                      <h4>Ảnh đã chọn:</h4>
+                      <ul>
+                        {values.images.map((file, index) => (
+                          <li key={index}>
+                            <img
+                              src={URL.createObjectURL(file)}
+                              alt={`image-${index}`}
+                              width="100"
+                              height="100"
+                            />
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
                 </div>
 
                 <div className="button-container">

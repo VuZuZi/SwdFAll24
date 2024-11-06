@@ -6,7 +6,13 @@ const userModel = require("../models/user");
 const authService = {
   register: async (userData) => {
     const hashedPassword = await bcrypt.hash(userData.password, 10);
-    await userModel.create({ email: userData.email, password: hashedPassword });
+    await userModel.create({
+      first_name: userData.firstName,
+      last_name: userData.lastName,
+      phone: userData.phoneNumber,
+      email: userData.email,
+      password: hashedPassword,
+    });
   },
 
   login: async (loginData) => {
