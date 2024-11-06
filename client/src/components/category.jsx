@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { formatDistanceToNow } from "date-fns";
+import { toast } from "react-toastify";
 
 export const Category = () => {
   const [ads, setAds] = useState([]);
@@ -52,7 +53,12 @@ export const Category = () => {
   };
 
   const handleSearchInputChange = (event) => {
-    setSearchKeyword(event.target.value);
+    let value = event.target.value.trim();
+    if (value.length > 100) {
+      toast.error("Vui lòng nhập ít hơn 100 ký tự");
+    } else {
+      setSearchKeyword(value);
+    }
   };
 
   const handleSearchClick = () => {
@@ -62,6 +68,7 @@ export const Category = () => {
       address: selectedAddress,
       subcategories: selectedSubcategory,
     };
+
     setSelectedSubcategory("");
     axios
       .get("http://localhost:3000/ad/", { params: query })
@@ -78,7 +85,6 @@ export const Category = () => {
       ? setSelectedCategory(parentCategory.name)
       : setSelectedCategory("");
     setSearchKeyword("");
-    console.log(parentCategory.name);
   };
 
   useEffect(() => {
@@ -86,6 +92,7 @@ export const Category = () => {
       handleSearchClick();
     }
   }, [selectedSubcategory]);
+
 
   const formatPrice = (price) => {
     return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
@@ -140,6 +147,7 @@ export const Category = () => {
                 value={searchKeyword}
                 onChange={handleSearchInputChange}
                 placeholder="Tìm kiếm theo từ khóa"
+                maxLength={101}
               />
               <select
                 id="product-select"

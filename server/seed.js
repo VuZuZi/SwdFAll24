@@ -234,6 +234,7 @@ const seedDatabase = async () => {
         approved: true,
         images: [
           "https://bizweb.dktcdn.net/thumb/1024x1024/100/306/444/products/bo-hp-600-g1-d7e0040d-76a9-4fcc-90b1-e6731539f95f-1abd2d98-166e-4be0-91cd-df7ca525d919.jpg?v=1647599790963",
+          "https://vitinhtrungtin.com/hoanghung/36/images/HP-280-Pro-G5-SFF-46L39PA-03.jpg",
         ],
       },
       {
@@ -247,6 +248,7 @@ const seedDatabase = async () => {
           "https://luxcasastore.com/uploads/images/2021/09/1632682934-single_product11-1614129187multiproduct50ghesofatiepkhachsangtrong.jpg",
           "https://kenzaluxury.vn/wp-content/uploads/2021/05/VERATO-TO.jpg",
           "https://sofavietphat.vn/wp-content/uploads/2021/10/sofa-cao-cap-dep-cc31.jpg",
+          "https://noithatgiakho.com/upload/sanpham/large/ghe-sofa-tan-co-dien-cao-cap-2m4x80cm-459-4.jpg",
         ],
       },
       {
@@ -271,6 +273,7 @@ const seedDatabase = async () => {
         location: "Hồ Chí Minh",
         images: [
           "https://static.chotot.com/storage/chotot-kinhnghiem/xe/2021/04/acc1d4c1-cho-tot-xe-toyota-camry-1.jpg",
+          "https://static.chotot.com/storage/chotot-kinhnghiem/xe/2021/04/acc1d4c1-cho-tot-xe-toyota-camry-1.jpg",
         ],
         postedBy: user._id,
         approved: true,
@@ -284,6 +287,7 @@ const seedDatabase = async () => {
         postedBy: user._id,
         images: [
           "https://i2-vnexpress.vnecdn.net/2023/04/03/HondaVision1102023TheThao1jpg-1680509381.jpg?w=1200&h=0&q=100&dpr=1&fit=crop&s=XG3CWAMb2XXPn4UAqGWQ1w",
+          "https://files01.danhgiaxe.com/Cr-rSFJoNEjRzxrqF7jspuBJaOk=/fit-in/1280x0/20230104/honda-vision-2023-9-202736.jpg",
         ],
         approved: true,
       },
@@ -310,6 +314,7 @@ const seedDatabase = async () => {
         postedBy: user._id,
         images: [
           "https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/i/p/iphone-13-pro-max.png",
+          "https://thangpro.vn/uploads/source/iphone/13promax-128gb/2024-01-05-17-34-img-3969.jpg",
         ],
       },
       {
@@ -351,6 +356,7 @@ const seedDatabase = async () => {
         postedBy: user._id,
         images: [
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAGDXojt6wsBT_SYaHmQIgKwjznHFxRm--gw&s",
+          "https://cdn.ankhang.vn/media/product/26642_laptop_dell_inspiron_15_3530_p16wd1_6.jpg",
         ],
       },
       {
@@ -361,7 +367,10 @@ const seedDatabase = async () => {
         price: 5000000,
         location: "Hà Nội",
         postedBy: user._id,
-        images: ["https://donghoolevs.vn/wp-content/uploads/2022/11/382.5.png"],
+        images: [
+          "https://donghoolevs.vn/wp-content/uploads/2022/11/382.5.png",
+          "https://cdn.ankhang.vn/media/product/26642_laptop_dell_inspiron_15_3530_p16wd1_6.jpg",
+        ],
         approved: true,
       },
       {
@@ -373,6 +382,7 @@ const seedDatabase = async () => {
         postedBy: user._id,
         images: [
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqui-uYJbMILfTB4NF3Ot8YBN7zDIyAJ7sLA&s",
+          "https://dogonhatoi.com/uploads/393/images/tu-quan-ao-go-soi-4-canh-hien-dai.jpg",
         ],
       },
       {
@@ -385,6 +395,7 @@ const seedDatabase = async () => {
         postedBy: user._id,
         images: [
           "https://mbmart.com.vn/uploads/2024/03/xe-dap-the-thao-tay-cong-kma-1.jpg.webp",
+          "https://bizweb.dktcdn.net/100/412/747/files/xe-dap-the-thao-bike2school-3-min.webp?v=1688564211212",
         ],
         approved: true,
       },
@@ -412,6 +423,7 @@ const seedDatabase = async () => {
         approved: true,
         images: [
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQARVt3PDpNkPbcjaTPgyy-nq-ZIKfgtPRYhw&s",
+          "https://i.ytimg.com/vi/kVGsYo1w_2k/hq720.jpg?sqp=-oaymwE7CK4FEIIDSFryq4qpAy0IARUAAAAAGAElAADIQj0AgKJD8AEB-AH-CYAC0AWKAgwIABABGGUgZChNMA8=&rs=AOn4CLCNW6Xo9jezeeTqOhkpTRXPz12akQ",
         ],
       },
       {
@@ -425,6 +437,7 @@ const seedDatabase = async () => {
         approved: true,
         images: [
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3v865a-gKdx_3ZNg7-jEf-imEdeTDt5Up6w&s",
+          "https://bizweb.dktcdn.net/thumb/1024x1024/100/372/605/products/ban-lam-viec-2.jpg?v=1698479204163",
         ],
       },
       {
@@ -452,6 +465,7 @@ const seedDatabase = async () => {
         approved: true,
         images: [
           "https://down-vn.img.susercontent.com/file/f509e2e6b4ebb77f59050e8eac1fdfdf",
+          "https://salt.tikicdn.com/cache/w300/ts/product/a8/16/0a/79494848c7691e2eb7def2ed5902e2ac.jpg",
         ],
       },
       {
@@ -464,6 +478,7 @@ const seedDatabase = async () => {
         approved: true,
         images: [
           "https://cdn.tgdd.vn/Products/Images/44/306133/msi-gaming-gf63-thin-11uc-i7-1228vn-thumb-600x600.jpg",
+          "https://product.hstatic.net/200000710483/product/22073_laptop_msi_gf63_thin_11sc_665vn_1_150981__1__9d240209c2024ab6acc783ae373b4d74.jpg",
         ],
       },
       {
@@ -477,6 +492,7 @@ const seedDatabase = async () => {
         approved: true,
         images: [
           "https://dienmayminhthanhphat.com/wp-content/uploads/e0c1d4246ffd92a3cbec.jpg",
+          "https://dienlanhhoanghai.com/wp-content/uploads/2020/11/tu-lanh-LG-250l.jpg",
         ],
       },
     ];

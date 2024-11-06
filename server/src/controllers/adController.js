@@ -40,7 +40,7 @@ const adController = {
     try {
       const { id } = req.params;
       const { approved } = req.body;
-      
+
       const updatedAd = await adService.approveAd(id, approved);
       if (!updatedAd) {
         return res.status(404).json({ error: "Bài đăng không tồn tại" });
@@ -54,12 +54,21 @@ const adController = {
 
   createAd: async (req, res) => {
     try {
-      const adData = req.body;  
+      const adData = req.body;
       const newAd = await adService.createAd(adData);
       res.status(201).json(newAd);
     } catch (error) {
       console.error("Error creating ad:", error);
       res.status(500).json({ error: "Error creating ad" });
+    }
+  },
+
+  getAdsByUserId: async (req, res) => {
+    try {
+      const ads = await adService.getAdsByUserIdService(req.params.userId);
+      res.status(200).json(ads);
+    } catch (error) {
+      res.status(500).json({ message: "Error fetching user ads" });
     }
   },
 };

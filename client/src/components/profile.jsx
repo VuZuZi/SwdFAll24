@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../assets/css/Profile.css";
+import { useHistory } from "react-router-dom";
 export const Profile = (props) => {
   const [userData, setUserData] = useState(null);
   const [error, setError] = useState(null);
+  const history = useHistory();
   const [updateData, setUpdateData] = useState({
     first_name: "",
     last_name: "",
@@ -27,24 +29,21 @@ export const Profile = (props) => {
         Authorization: `Bearer ${token}`,
       };
 
-      await axios.put(
-        "http://localhost:3000/user/update-profile",
-        updateData,
-        {
-          headers,
-        }
-      );
-      const response = await axios.get(
-        "http://localhost:3000/user/profile",
-        {
-          headers,
-        }
-      );
+      await axios.put("http://localhost:3000/user/update-profile", updateData, {
+        headers,
+      });
+      const response = await axios.get("http://localhost:3000/user/profile", {
+        headers,
+      });
       setUserData(response.data);
       setIsUpdating(false);
     } catch (error) {
       setError("Failed to load user profile");
     }
+  };
+
+  const handleViewHistory = () => {
+    history.push("/history");
   };
   useEffect(() => {
     const fetchUserData = async () => {
@@ -55,12 +54,9 @@ export const Profile = (props) => {
           Authorization: `Bearer ${token}`,
         };
 
-        const response = await axios.get(
-          "http://localhost:3000/user/profile",
-          {
-            headers,
-          }
-        );
+        const response = await axios.get("http://localhost:3000/user/profile", {
+          headers,
+        });
         setUserData(response.data);
         console.log("Data User: ", setUserData);
       } catch (error) {
@@ -193,6 +189,13 @@ export const Profile = (props) => {
             <a href="/" className="btn-back">
               Trở Về
             </a>
+          </button>
+          <button
+            style={{ marginLeft: "30px" }}
+            onClick={handleViewHistory}
+            className="mx-4 button-profile"
+          >
+            Lịch sử bài đăng
           </button>
         </div>
       </div>

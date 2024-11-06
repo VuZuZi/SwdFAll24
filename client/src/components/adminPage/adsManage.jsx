@@ -67,7 +67,12 @@ const AdsManager = () => {
   };
 
   const handleSearchInputChange = (event) => {
-    setSearchKeyword(event.target.value);
+    let value = event.target.value.trim();
+    if (value.length > 100) {
+      toast.error("Vui lòng nhập ít hơn 100 ký tự");
+    } else {
+      setSearchKeyword(value);
+    }
   };
 
   const handleSubcategoryClick = (subcategory) => {
@@ -238,7 +243,7 @@ const AdsManager = () => {
                   </div>
                   <div className="col-gap">
                     <button
-                      className={`btn ${
+                      className={`btn btn-custom-search ${
                         product.approved ? "btn-success" : "btn-danger"
                       }`}
                       style={{ marginLeft: "10px" }}

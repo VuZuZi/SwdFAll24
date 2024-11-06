@@ -22,6 +22,7 @@ import AdminRoute from "./components/adminPage/AdminRoute.jsx";
 import Unauthorized from "./components/unauthorized.jsx";
 import Loading from "./components/loading.jsx";
 import withLoading from "./components/withLoading";
+import HistoryAds from "./components/historyAds.jsx";
 const App = () => {
   const [cart, setCart] = useState([]);
   const addToCart = (product) => {
@@ -37,13 +38,12 @@ const App = () => {
           <ToastContainer />
 
           <Switch>
-          <Route path="/postAd" component={withLoading(Post)} />
-            <Route path="/postAd" component={withLoading(Post)} />
             <Route path="/login" component={withLoading(Login)} />
             <Route path="/" exact component={withLoading(Header)} />
             <Route path="/services" component={withLoading(Service)} />
             <Route path="/about" component={withLoading(About)} />
             <Route path="/profile" component={withLoading(Profile)} />
+            <Route path="/history" component={withLoading(HistoryAds)} />
             <Route path="/admin" component={withLoading(AdminPage)} />
             <Route path="/postAd" component={withLoading(Post)} />
             <Route path="/category">

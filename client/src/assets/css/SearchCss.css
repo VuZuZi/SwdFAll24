@@ -16,7 +16,9 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
+  flex: 1;
 }
+
 .sticky-header {
   position: sticky;
     top: 90px;
@@ -203,7 +205,6 @@ li {
   
   .button-container-category {
     display: flex;
-    justify-content: center;
     gap: 8px;
   }
   .pagination button {
@@ -258,4 +259,4 @@ li {
 
     width: 100%;
 }
-  
+

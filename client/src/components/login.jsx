@@ -12,22 +12,30 @@ export const Login = (props) => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
   const history = useHistory();
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
 
   const handleRegister = async () => {
     if (password !== confirmPassword) {
+      toast.error("Xác nhận mật khẩu sai", { autoClose: 3000 });
       return;
     }
     try {
-      const response = await axios.post(
-        "http://localhost:3000/auth/register",
-        {
-          email,
-          password,
-        }
-      );
+      const response = await axios.post("http://localhost:3000/auth/register", {
+        firstName,
+        lastName,
+        phoneNumber,
+        email,
+        password,
+      });
       if (response.status === 201) {
         toast.success("Đăng Ký Thành Công", { autoClose: 3000 });
+        localStorage.setItem("token", response.data.token);
         history.push("/");
+        setTimeout(() => {
+          window.location.reload();
+        }, 400);
       } else {
         toast.error("Đăng Ký Không Thành Công", { autoClose: 3000 });
       }
@@ -42,13 +50,10 @@ export const Login = (props) => {
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post(
-        "http://localhost:3000/auth/login",
-        {
-          email,
-          password,
-        }
-      );
+      const response = await axios.post("http://localhost:3000/auth/login", {
+        email,
+        password,
+      });
       if (response.status === 200) {
         toast.success("Đăng Nhập Thành Công", { autoClose: 3000 });
         localStorage.setItem("token", response.data.token);
@@ -174,6 +179,33 @@ export const Login = (props) => {
         <div className="form-content">
           <header>Đăng Ký</header>
           <form action="#">
+            <div className="field input-field">
+              <input
+                type="text"
+                placeholder="Họ"
+                className="input"
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+              />
+            </div>
+            <div className="field input-field">
+              <input
+                type="text"
+                placeholder="Tên"
+                className="input"
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+              />
+            </div>
+            <div className="field input-field">
+              <input
+                type="text"
+                placeholder="Số Điện Thoại"
+                className="input"
+                value={phoneNumber}
+                onChange={(e) => setPhoneNumber(e.target.value)}
+              />
+            </div>
             <div className="field input-field">
               <input
                 type="email"
