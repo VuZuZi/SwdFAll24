@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../assets/css/Profile.css";
+import { useHistory } from "react-router-dom";
 export const Profile = (props) => {
   const [userData, setUserData] = useState(null);
   const [error, setError] = useState(null);
+  const history = useHistory();
   const [updateData, setUpdateData] = useState({
     first_name: "",
     last_name: "",
@@ -46,6 +48,11 @@ export const Profile = (props) => {
       setError("Failed to load user profile");
     }
   };
+
+  const handleViewHistory = () => {
+    history.push("/history");
+
+  }
   useEffect(() => {
     const fetchUserData = async () => {
       try {
@@ -193,6 +200,9 @@ export const Profile = (props) => {
             <a href="/" className="btn-back">
               Trở Về
             </a>
+          </button>
+          <button style={{marginLeft: "30px"}} onClick={handleViewHistory} className="mx-4 button-profile">
+              Lịch sử bài đăng
           </button>
         </div>
       </div>

@@ -9,6 +9,7 @@ const provinces = [
   { id: 3, name: 'Đà Nẵng' },
   { id: 4, name: 'Hải Phòng' },
   { id: 5, name: 'Cần Thơ' },
+  { id: 6, name: 'Nghệ An' },
 ];
 
 router.get('/', (req, res) => {

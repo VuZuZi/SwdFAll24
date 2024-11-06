@@ -18,7 +18,7 @@ const adService = {
 
   getAdById: async (id) => {
     try {
-      const ad = await Ad.findOne({ _id: id})
+      const ad = await Ad.findOne({ _id: id })
         .populate("postedBy", "first_name last_name")
         .exec();
       return ad;
@@ -28,7 +28,13 @@ const adService = {
     }
   },
 
-  getFilteredAds: async (keyword, category, address, subcategories, isAdmin) => {
+  getFilteredAds: async (
+    keyword,
+    category,
+    address,
+    subcategories,
+    isAdmin
+  ) => {
     try {
       const filter = {};
 
@@ -65,7 +71,7 @@ const adService = {
       throw error;
     }
   },
-  
+
   approveAd: async (id, approved) => {
     try {
       console.log(approved);
@@ -87,15 +93,33 @@ const adService = {
     }
   },
 
-  createAd: async (adData) => { 
+  createAd: async (adData) => {
     try {
       console.log(adData);
-      
-      
+
       const newAd = new Ad(adData);
       return await newAd.save();
     } catch (error) {
       console.error("Error creating ad:", error);
+      throw error;
+    }
+  },
+
+  getAdsByUserIdService: async (userId) => {
+    console.log("User ID:", userId);
+
+    try {
+      const ads = await Ad.find(
+        { postedBy: userId },
+        "title price location images createdAt approved"
+      )
+        .populate("postedBy", "first_name last_name")
+        .sort({ createdAt: -1 });
+      console.log(ads.length);
+
+      return ads;
+    } catch (error) {
+      console.error("Error fetching ads by user ID: ", error);
       throw error;
     }
   },
