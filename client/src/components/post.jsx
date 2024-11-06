@@ -6,18 +6,29 @@ import { storage } from "../components/FireBase/firebaseConfig";
 import * as Yup from "yup";
 import { jwtDecode } from "jwt-decode";
 import { toast } from "react-toastify";
+import { useHistory } from "react-router-dom";
 
-import { ref, uploadBytes, getDownloadURL, listAll } from "firebase/storage";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 const PostAd = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [provinces, setProvinces] = useState([]);
   const [categories, setCategories] = useState([]);
   const [subcategories, setSubcategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedAddress, setSelectedAddress] = useState("");
-
+  const history = useHistory();
   useEffect(() => {
     const fetchCategories = async () => {
+      const token = localStorage.getItem("token");
+      if (token) {
+        const decodedToken = jwtDecode(token);
+        localStorage.setItem("email", decodedToken.email);
+        localStorage.setItem("phone", decodedToken.phone)
+      } else {
+        toast.error("Yêu cầu đăng nhập", { autoClose: 3000 });
+        history.push("/");
+      }
       try {
         const response = await axios.get("http://localhost:3000/category");
 
@@ -42,8 +53,8 @@ const PostAd = () => {
   }, []);
 
   const initialValues = {
-    phone: "",
-    email: "",
+    phone: localStorage.getItem("phone") || "",
+    email: localStorage.getItem("email") || "",
     location: "",
     category: {
       name: "",

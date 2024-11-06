@@ -25,7 +25,7 @@ const authService = {
     }
 
     const token = jwt.sign(
-      { email: user.email, id_user: user._id, role: user.role },
+      { email: user.email, id_user: user._id, role: user.role, phone: user.phone },
       "secret",
       {
         expiresIn: "60d",

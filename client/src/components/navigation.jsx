@@ -3,6 +3,7 @@ import logo from "../assets/img/Logo.png";
 import { useHistory } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 import "../assets/css/navigationCss.css";
+import { toast } from "react-toastify";
 
 export const Navigation = (props) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -30,6 +31,7 @@ export const Navigation = (props) => {
   };
 
   const handleLogout = () => {
+    toast.success("Đăng xuất Thành Công", { autoClose: 3000 });
     localStorage.removeItem("token");
     localStorage.removeItem("persist:root");
     setIsLoggedIn(false);

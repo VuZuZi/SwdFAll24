@@ -37,8 +37,6 @@ const App = () => {
           <ToastContainer />
 
           <Switch>
-          <Route path="/postAd" component={withLoading(Post)} />
-            <Route path="/postAd" component={withLoading(Post)} />
             <Route path="/login" component={withLoading(Login)} />
             <Route path="/" exact component={withLoading(Header)} />
             <Route path="/services" component={withLoading(Service)} />
