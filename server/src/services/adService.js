@@ -61,6 +61,7 @@ const adService = {
         filter["category.subcategories"] = subcategories;
       }
 
+      
       const ads = await Ad.find(filter)
         .populate("postedBy", "first_name last_name")
         .sort({ approved: -1, createdAt: -1 });

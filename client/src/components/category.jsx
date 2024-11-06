@@ -81,7 +81,6 @@ export const Category = () => {
     const parentCategory = categories.find((category) =>
       category.subcategories.includes(subcategory)
     );
-
     parentCategory.name
       ? setSelectedCategory(parentCategory.name)
       : setSelectedCategory("");
