@@ -29,19 +29,12 @@ export const Profile = (props) => {
         Authorization: `Bearer ${token}`,
       };
 
-      await axios.put(
-        "http://localhost:3000/user/update-profile",
-        updateData,
-        {
-          headers,
-        }
-      );
-      const response = await axios.get(
-        "http://localhost:3000/user/profile",
-        {
-          headers,
-        }
-      );
+      await axios.put("http://localhost:3000/user/update-profile", updateData, {
+        headers,
+      });
+      const response = await axios.get("http://localhost:3000/user/profile", {
+        headers,
+      });
       setUserData(response.data);
       setIsUpdating(false);
     } catch (error) {
@@ -51,8 +44,7 @@ export const Profile = (props) => {
 
   const handleViewHistory = () => {
     history.push("/history");
-
-  }
+  };
   useEffect(() => {
     const fetchUserData = async () => {
       try {
@@ -62,12 +54,9 @@ export const Profile = (props) => {
           Authorization: `Bearer ${token}`,
         };
 
-        const response = await axios.get(
-          "http://localhost:3000/user/profile",
-          {
-            headers,
-          }
-        );
+        const response = await axios.get("http://localhost:3000/user/profile", {
+          headers,
+        });
         setUserData(response.data);
         console.log("Data User: ", setUserData);
       } catch (error) {
@@ -201,8 +190,12 @@ export const Profile = (props) => {
               Trở Về
             </a>
           </button>
-          <button style={{marginLeft: "30px"}} onClick={handleViewHistory} className="mx-4 button-profile">
-              Lịch sử bài đăng
+          <button
+            style={{ marginLeft: "30px" }}
+            onClick={handleViewHistory}
+            className="mx-4 button-profile"
+          >
+            Lịch sử bài đăng
           </button>
         </div>
       </div>
